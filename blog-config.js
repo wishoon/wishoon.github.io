@@ -1,6 +1,6 @@
 module.exports = {
   title: "rookie",
-  description: "시간이 흘러도 변화에 대응되는 코드를 추구합니다."
+  description: "시간이 흘러도 변화에 대응되는 코드를 추구합니다.",
   author: "루키",
   siteUrl: "https://wishoon.github.io/",
   links: {
