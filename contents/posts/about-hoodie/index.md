@@ -17,6 +17,7 @@ Start your blog with a neatly designed gatsby-starter-hoodie that supports dark 
 
 ## Features
 
+- Workflow test
 - Markdown
 - Code Highlighting
 - Katex Syntax
