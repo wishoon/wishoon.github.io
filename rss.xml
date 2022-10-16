@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[RSS Feed of rookie]]></title><description><![CDATA[시간이 흘러도 변화에 대응되는 코드를 추구합니다.]]></description><link>https://wishoon.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Sun, 16 Oct 2022 02:01:07 GMT</lastBuildDate><item><title><![CDATA[다이나믹 프록시와 팩토리 빈]]></title><description><![CDATA[들어가기전.. Spring AOP는 스프링의 3대 축이라고 불리기도 하지만 그만큼 내용의 깊이가 깊고 어려운 항목이기도 합니다. 이로 인해서, Spring AOP…]]></description><link>https://wishoon.github.io/다이나믹_프록시와_팩토리_빈/</link><guid isPermaLink="false">https://wishoon.github.io/다이나믹_프록시와_팩토리_빈/</guid><pubDate>Sat, 15 Oct 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;들어가기전..&lt;/h2&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[RSS Feed of rookie]]></title><description><![CDATA[시간이 흘러도 변화에 대응되는 코드를 추구합니다.]]></description><link>https://wishoon.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Sun, 16 Oct 2022 02:16:30 GMT</lastBuildDate><item><title><![CDATA[다이나믹 프록시와 팩토리 빈]]></title><description><![CDATA[들어가기전.. Spring AOP는 스프링의 3대 축이라고 불리기도 하지만 그만큼 내용의 깊이가 깊고 어려운 항목이기도 합니다. 이로 인해서, Spring AOP…]]></description><link>https://wishoon.github.io/다이나믹_프록시와_팩토리_빈/</link><guid isPermaLink="false">https://wishoon.github.io/다이나믹_프록시와_팩토리_빈/</guid><pubDate>Sat, 15 Oct 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;들어가기전..&lt;/h2&gt;
 &lt;p&gt;Spring AOP는 스프링의 3대 축이라고 불리기도 하지만 그만큼 내용의 깊이가 깊고 어려운 항목이기도 합니다. 이로 인해서, Spring AOP를 계속 사용하고 있음에도 불구하고 개발자는 인지하지 못하기도 합니다. 이번 시리즈에서는 Spring AOP를 조금씩 알아보는 시간을 가져보려고 합니다.&lt;/p&gt;
 &lt;h2&gt;프록시 패턴과 데코레이터 패턴의 차이..?&lt;/h2&gt;
 &lt;p&gt;이 두가지 패턴의 차이점을 알기 전에 프록시의 개념에 대해서 간단하게 살펴보겠습니다.&lt;/p&gt;
@@ -154,13 +154,13 @@
     &lt;span class=&quot;token comment&quot;&gt;// setter ..&lt;/span&gt;
 &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;위의 코드를 보면 알 수 있듯이 팩토리 빈이 만드는 다이내믹 프록시는 구현 인터페이스나, 타깃의 종류에 제한이 없습니다. 따라서 &lt;strong&gt;DI를 통해 TxHandler를 이용하는 다이내믹 프록시를 재사용해서 사용&lt;/strong&gt;할 수 있습니다.&lt;/p&gt;
-&lt;h3&gt;팩토리 빈의 한계, 그리고 Spring에서 제시하는 해결책&lt;/h3&gt;
+&lt;h3&gt;팩토리 빈의 한계&lt;/h3&gt;
 &lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;TransactionHandler&lt;/code&gt;를 이용하는 다이내믹 프록시를 생성해주는 &lt;code class=&quot;language-text&quot;&gt;TxProxyFactoryBean&lt;/code&gt;은 코드의 수정 없이도 다양한 클래스에 적용이 가능합니다. 타깃 오브젝트에 맞는 프로퍼티 정보만 설정해서 빈으로 등록해주면 되기 때문입니다.&lt;/p&gt;
 &lt;p&gt;하지만 이러한 방법 역시 명확한 한계점을 가지고 있습니다. 바로 한 번에 여러 클래스에 공통적인 부가기능을 제공하는 것 입니다. 지금과 같은 방법은 &lt;strong&gt;적용 대상인 클래스가 N개라면 그만큼의 프록시 패턴의 빈의 설정이 중복&lt;/strong&gt;되는 구조를 가지게 됩니다.&lt;/p&gt;
 &lt;p&gt;또한 &lt;strong&gt;&lt;code class=&quot;language-text&quot;&gt;Handler&lt;/code&gt; 오브젝트가 프록시 팩토리 빈 갯수만큼 만들어진다는 점입니다.&lt;/strong&gt; 이는 타깃 오브젝트르 프로퍼티로 가지고 있음으로 생기는 문제입니다.&lt;/p&gt;
 &lt;p&gt;이러한 문제들을 해결할 수 있는 방법은 없을까요?? 이를 다음글에서 한번 살펴보도록 합시다.&lt;/p&gt;
 &lt;h2&gt;글을 마무리하며..&lt;/h2&gt;
-&lt;p&gt;이번 글을 정리하면서 Proxy에 대해서 다시 한번 정리할 수 있는 시간이였습니다. 매번 해당 내용이 추상적으로 다가왔는데 이번에는 유독 이해가 잘되었습니다. 아마 진행하고 있는 테크코스 과제와 스터디가 큰 영향을 미쳤다고 생각을 합니다. 이번 6장을 끝으로 토비의 스프링 스터디를 마무리 할 것 같아서 유의미하게 지식을 정리할 수 있는 시간이 되었으면 합니다.&lt;/p&gt;
+&lt;p&gt;이번 글을 정리하면서 Proxy에 대해서 다시 한번 정리할 수 있는 시간이였습니다. 매번 해당 내용이 추상적으로 다가왔는데 이번에는 조금 이해가 잘되었던 것 같습니다. 아마 진행하고 있는 테크코스 과제와 스터디가 큰 영향을 미친거 같기도 합니다. 이번 6장을 끝으로 토비의 스프링 스터디를 마무리 할 것 같은데 유의미하게 마무리할 수 있었으면 좋겠습니다.&lt;/p&gt;
 &lt;br&gt;
 &lt;blockquote&gt;
 &lt;p&gt;참고한 글&lt;/p&gt;
