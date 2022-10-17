@@ -1,4 +1,287 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[RSS Feed of rookie]]></title><description><![CDATA[시간이 흘러도 변화에 대응되는 코드를 추구합니다.]]></description><link>https://wishoon.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Mon, 17 Oct 2022 01:46:53 GMT</lastBuildDate><item><title><![CDATA[Replication과 Spring Boot]]></title><description><![CDATA[…]]></description><link>https://wishoon.github.io/Replication과-SpringBoot/</link><guid isPermaLink="false">https://wishoon.github.io/Replication과-SpringBoot/</guid><pubDate>Sun, 16 Oct 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;사용배경&lt;/h2&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[RSS Feed of rookie]]></title><description><![CDATA[시간이 흘러도 변화에 대응되는 코드를 추구합니다.]]></description><link>https://wishoon.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Mon, 17 Oct 2022 02:04:14 GMT</lastBuildDate><item><title><![CDATA[Nginx와 Gzip을 활용한 프론트 최적화]]></title><description><![CDATA[문제 상황…]]></description><link>https://wishoon.github.io/Nginx와-Gzip을-활용한-프론트-최적화/</link><guid isPermaLink="false">https://wishoon.github.io/Nginx와-Gzip을-활용한-프론트-최적화/</guid><pubDate>Sun, 16 Oct 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;문제 상황&lt;/h2&gt;
+&lt;p&gt;5차 데모를 앞두고 프론트 팀의 요구사항으로 다음과 같은 요구사항을 확인할 수 있었습니다.&lt;/p&gt;
+&lt;p&gt;&lt;span class=&apos;gatsby-resp-image-wrapper&apos; style=&apos;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 680px; margin-bottom: 16px;&apos;&gt;
+      &lt;a class=&apos;gatsby-resp-image-link&apos; href=&apos;/static/91e2ab4163d16b0d5a9a6a3fe29f7d9e/84e61/img.png&apos; style=&apos;display: block&apos; target=&apos;_blank&apos; rel=&apos;noopener&apos;&gt;
+    &lt;span class=&apos;gatsby-resp-image-background-image&apos; style=&quot;padding-bottom: 13.529411764705882%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAADCAYAAACTWi8uAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAlklEQVQI102MgQ6DIAxE/f9PHHNuESwMwWGMRgRuwIxZk5feNddrGLthXVekFJHCUYnBn/tHCOHiOPItxssX/T8NEUFwDnobPJVDO1gwYdDSB7126ISClBJDztFJ8UKIqnn+XZYF8zzDOYdGaw0zjpDa4kEWnZzAuMY9l77UhF6OmKytJSVbSuqPMVBKYd93eO+xbVvlCzqr5FbbwFEPAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;img class=&apos;gatsby-resp-image-image&apos; alt=&apos;img&apos; title=&apos;img&apos; src=&apos;/static/91e2ab4163d16b0d5a9a6a3fe29f7d9e/ca1dc/img.png&apos; srcset=&apos;/static/91e2ab4163d16b0d5a9a6a3fe29f7d9e/e7570/img.png 170w,
+/static/91e2ab4163d16b0d5a9a6a3fe29f7d9e/f46e7/img.png 340w,
+/static/91e2ab4163d16b0d5a9a6a3fe29f7d9e/ca1dc/img.png 680w,
+/static/91e2ab4163d16b0d5a9a6a3fe29f7d9e/02d09/img.png 1020w,
+/static/91e2ab4163d16b0d5a9a6a3fe29f7d9e/9d567/img.png 1360w,
+/static/91e2ab4163d16b0d5a9a6a3fe29f7d9e/84e61/img.png 1566w&apos; sizes=&apos;(max-width: 680px) 100vw, 680px&apos; style=&apos;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&apos; loading=&apos;lazy&apos; decoding=&apos;async&apos;&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;프론트 팀에서는 최적화 대상 중에 하나로 &lt;code class=&quot;language-text&quot;&gt;bundle.js&lt;/code&gt; 에 압축을 하기로 하였고, 이를 위해서 &lt;code class=&quot;language-text&quot;&gt;gzip&lt;/code&gt;으로 압축을 하기로 결정을 하였습니다.&lt;/p&gt;
+&lt;p&gt;&lt;span class=&apos;gatsby-resp-image-wrapper&apos; style=&apos;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 680px; margin-bottom: 16px;&apos;&gt;
+      &lt;a class=&apos;gatsby-resp-image-link&apos; href=&apos;/static/e8b03ab7b5d81fb08fd5b2e74b1b48e4/64756/img_1.png&apos; style=&apos;display: block&apos; target=&apos;_blank&apos; rel=&apos;noopener&apos;&gt;
+    &lt;span class=&apos;gatsby-resp-image-background-image&apos; style=&quot;padding-bottom: 75.29411764705883%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAPCAYAAADkmO9VAAAACXBIWXMAAAsTAAALEwEAmpwYAAACc0lEQVQ4y6VTy27TQBTNz7DiQ1jyAfxLF2xASNAPABYpWaSFQsWChqYsiNQozwZImqCYOs8Wx4md+DF+1j7MndSRA4INIx3d55y5985MBnzFcYz/Wen9mbURI4pi+DeRCHphJOyA2zdcEsIoEojitU2SbNL5JrGPkEm4NSfA2+4MR70ZXjSvUBrqOGgrwvd5oKMgzYX+5kLBibTAIZcHHQW1qYF0f5kwDEEIggC268NwPFhcMm+NheXC5D6KrZgnbPIbbJ3n+gESDkLGtm0QGIfFoa0MAZ1jsTJhWTZcxuBwMGZDNyxohgnDsrhuihzS2S1PhvFE215vmPNgb2ahNlmhPFqhNpxjoC7hOkTGsDQtVGQV38YaTnsKGsMFqgMVim6KnBShjUR+PW/g6LiI/IdP8F0Gz3ORdEGHmrYFeTnHyeUYP5c6QtcVlSccG0Lf9zGdTpHf38fHwjGePH6EZ7u7wm/fjsNzHPS1GQ6lL8h2ynhaPxV+ZrPNoVuEk8kEhUIB2b09yLKMbDYrDqGYxSsjQllX8fqijt1KEa86FRjc77C/EI7HYxSLRezs7MA0TZTLZYxGIxGjwcMPkZNauHv6Eg8qR7hTfI7S5Adiftvm74Se50FRFORyOVFZtVpFPp8XPooJQi/AwbCD+833eChVcK/+DmVluCHcmqHD29F1HbVaDfV6HWdnZyiVStA0TcSSlq6vr9G7lNAdyWh/7+KKjyR9qVuEqqqi2+2i3W6j3++jWqmKlqnChFCSJJw3z3HR7qDZaKDVavG3am0TpklpXgQioZfvuu6mAgL56VdRTnD7w9JP7493SKelkY4l+FfOL1A/X2JQMbmEAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;img class=&apos;gatsby-resp-image-image&apos; alt=&apos;img 1&apos; title=&apos;img 1&apos; src=&apos;/static/e8b03ab7b5d81fb08fd5b2e74b1b48e4/ca1dc/img_1.png&apos; srcset=&apos;/static/e8b03ab7b5d81fb08fd5b2e74b1b48e4/e7570/img_1.png 170w,
+/static/e8b03ab7b5d81fb08fd5b2e74b1b48e4/f46e7/img_1.png 340w,
+/static/e8b03ab7b5d81fb08fd5b2e74b1b48e4/ca1dc/img_1.png 680w,
+/static/e8b03ab7b5d81fb08fd5b2e74b1b48e4/02d09/img_1.png 1020w,
+/static/e8b03ab7b5d81fb08fd5b2e74b1b48e4/64756/img_1.png 1200w&apos; sizes=&apos;(max-width: 680px) 100vw, 680px&apos; style=&apos;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&apos; loading=&apos;lazy&apos; decoding=&apos;async&apos;&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;일반적으로 보통 &lt;code class=&quot;language-text&quot;&gt;Nginx&lt;/code&gt;에서 &lt;code class=&quot;language-text&quot;&gt;gzip&lt;/code&gt;으로 압축을 처리할 수 있기 때문에, 압축 설정을 해주면 다음과 같이 압축이 된 것을 확인할 수 있습니다.&lt;/p&gt;
+&lt;p&gt;&lt;span class=&apos;gatsby-resp-image-wrapper&apos; style=&apos;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 680px; margin-bottom: 16px;&apos;&gt;
+      &lt;a class=&apos;gatsby-resp-image-link&apos; href=&apos;/static/cab4d28c1f8d5492a0c1cb9ec05967b3/f967b/img_2.png&apos; style=&apos;display: block&apos; target=&apos;_blank&apos; rel=&apos;noopener&apos;&gt;
+    &lt;span class=&apos;gatsby-resp-image-background-image&apos; style=&quot;padding-bottom: 5.88235294117647%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAABCAYAAADeko4lAAAACXBIWXMAAAsTAAALEwEAmpwYAAAASklEQVQI1x3JXQqAIBAA4a6y/jy0CpWuShFEdP8zTeDb8M1ym1BKpVrD2qD1QalGCIFVFdU0e9sPvPeM85pfRKbHGHHOkXLmeT9+xwMehtF2juIAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;img class=&apos;gatsby-resp-image-image&apos; alt=&apos;img 2&apos; title=&apos;img 2&apos; src=&apos;/static/cab4d28c1f8d5492a0c1cb9ec05967b3/ca1dc/img_2.png&apos; srcset=&apos;/static/cab4d28c1f8d5492a0c1cb9ec05967b3/e7570/img_2.png 170w,
+/static/cab4d28c1f8d5492a0c1cb9ec05967b3/f46e7/img_2.png 340w,
+/static/cab4d28c1f8d5492a0c1cb9ec05967b3/ca1dc/img_2.png 680w,
+/static/cab4d28c1f8d5492a0c1cb9ec05967b3/02d09/img_2.png 1020w,
+/static/cab4d28c1f8d5492a0c1cb9ec05967b3/9d567/img_2.png 1360w,
+/static/cab4d28c1f8d5492a0c1cb9ec05967b3/f967b/img_2.png 1418w&apos; sizes=&apos;(max-width: 680px) 100vw, 680px&apos; style=&apos;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&apos; loading=&apos;lazy&apos; decoding=&apos;async&apos;&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;하지만 저희 프론트 팀은 내부적으로 압축을 최적화해서 &lt;code class=&quot;language-text&quot;&gt;build&lt;/code&gt; 파일을 보내주기 때문에 압축된 파일을 사용하도록 &lt;code class=&quot;language-text&quot;&gt;Nginx&lt;/code&gt;를 설정해야 했습니다.&lt;/p&gt;
+&lt;p&gt;이를 사용하기 위해 &lt;code class=&quot;language-text&quot;&gt;Nginx Docs&lt;/code&gt;를 살펴보던 도중, 다음과 같은 내용을 확인할 수 있었습니다.&lt;/p&gt;
+&lt;p&gt;&lt;span class=&apos;gatsby-resp-image-wrapper&apos; style=&apos;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 680px; margin-bottom: 16px;&apos;&gt;
+      &lt;a class=&apos;gatsby-resp-image-link&apos; href=&apos;/static/7efe26bee4d77639dd4425c9c37fca50/ad2a0/img_3.png&apos; style=&apos;display: block&apos; target=&apos;_blank&apos; rel=&apos;noopener&apos;&gt;
+    &lt;span class=&apos;gatsby-resp-image-background-image&apos; style=&quot;padding-bottom: 54.11764705882353%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAAAsTAAALEwEAmpwYAAABiUlEQVQoz41T2Y6DMAzk/3+vlXofQKGUO1AgBMpsxlWqPqy0W2nkxHbGZux6SZLgcrngfD4jDEPcbjf4vo/r9Sr+OI6x2+3QNA3++r1eL3hMfDweyLIM9/sdaZp+wGJlWSLPcxRFgbquoZRCVVVQjZIidauQa+sfWyEVwsKSlWWBzJLwsSMkCQuN4whjjFhiGIa3bzTQRqOfNMbZAIslHKwzKhvkVYOu6zHoAVrrz+N/QRPvNx6rxUWNIC2RlLb9qrDEHfq+l05ITsv7b2DMgbkeP8VY5kk+SX8+icHn8yma0TqfK/BdqG1byWMjHjU6Ho8yYYJTDcMAURRhu91ivV5jv98jCAKJ07ozc06nk+SsVivZDo+T4yTZ6Xd1EX0ymOdZYm4QLkbrBjVNk2BZFnicJjsk2NFms8HhcJA9lG78AHEUSzfcUVr62Q3XjWf6ablOHvVhgBeS8wH3j+dhHNCZ37Vz9hvsUjSkDgT3jgJTXFUr1J3dUa1kiXmn8LLMVibm0Towxn/KD6cQRinQKsUMAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;img class=&apos;gatsby-resp-image-image&apos; alt=&apos;img 3&apos; title=&apos;img 3&apos; src=&apos;/static/7efe26bee4d77639dd4425c9c37fca50/ca1dc/img_3.png&apos; srcset=&apos;/static/7efe26bee4d77639dd4425c9c37fca50/e7570/img_3.png 170w,
+/static/7efe26bee4d77639dd4425c9c37fca50/f46e7/img_3.png 340w,
+/static/7efe26bee4d77639dd4425c9c37fca50/ca1dc/img_3.png 680w,
+/static/7efe26bee4d77639dd4425c9c37fca50/02d09/img_3.png 1020w,
+/static/7efe26bee4d77639dd4425c9c37fca50/9d567/img_3.png 1360w,
+/static/7efe26bee4d77639dd4425c9c37fca50/ad2a0/img_3.png 1490w&apos; sizes=&apos;(max-width: 680px) 100vw, 680px&apos; style=&apos;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&apos; loading=&apos;lazy&apos; decoding=&apos;async&apos;&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;내용을 간단하게 정리하자면, 압축된 파일 버전을 사용하지 않고 일반 파일 버전을 사용하고 싶은 경우 &lt;code class=&quot;language-text&quot;&gt;gzip_static&lt;/code&gt; 설정을 &lt;code class=&quot;language-text&quot;&gt;on&lt;/code&gt; 으로 변경해주면 된다는 내용이였습니다. 즉, 저희는 내부적으로 이미 최적화된 파일을 보내기 때문에 &lt;strong&gt;일반 파일 버전을 보내주는 해당 설정을 적용하면 저희가 원하는 결과&lt;/strong&gt;를 얻을 수 있을 것이라 생각했습니다.&lt;/p&gt;
+&lt;p&gt;&lt;span class=&apos;gatsby-resp-image-wrapper&apos; style=&apos;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 680px; margin-bottom: 16px;&apos;&gt;
+      &lt;a class=&apos;gatsby-resp-image-link&apos; href=&apos;/static/8d15dfa211f474088a41c10290e8b8bc/f967b/img_4.png&apos; style=&apos;display: block&apos; target=&apos;_blank&apos; rel=&apos;noopener&apos;&gt;
+    &lt;span class=&apos;gatsby-resp-image-background-image&apos; style=&quot;padding-bottom: 5.88235294117647%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAABCAYAAADeko4lAAAACXBIWXMAAAsTAAALEwEAmpwYAAAASklEQVQI1x3JSQqAMBAAQb8yWQ5OAppdBRHx/29qIbemermrkHKh1E5tg9YPcqk451hVUQ2ztz1hrWWc1/wiMt17jzGGECPP+/EDx4seiEBw3L8AAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;img class=&apos;gatsby-resp-image-image&apos; alt=&apos;img 4&apos; title=&apos;img 4&apos; src=&apos;/static/8d15dfa211f474088a41c10290e8b8bc/ca1dc/img_4.png&apos; srcset=&apos;/static/8d15dfa211f474088a41c10290e8b8bc/e7570/img_4.png 170w,
+/static/8d15dfa211f474088a41c10290e8b8bc/f46e7/img_4.png 340w,
+/static/8d15dfa211f474088a41c10290e8b8bc/ca1dc/img_4.png 680w,
+/static/8d15dfa211f474088a41c10290e8b8bc/02d09/img_4.png 1020w,
+/static/8d15dfa211f474088a41c10290e8b8bc/9d567/img_4.png 1360w,
+/static/8d15dfa211f474088a41c10290e8b8bc/f967b/img_4.png 1418w&apos; sizes=&apos;(max-width: 680px) 100vw, 680px&apos; style=&apos;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&apos; loading=&apos;lazy&apos; decoding=&apos;async&apos;&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;하지만 불행하게도 결과는 동일했습니다. 처음에는 설정 파일을 잘못 작성해서 그런것이라 생각해 &lt;code class=&quot;language-text&quot;&gt;Nginx&lt;/code&gt; 설정을 지우고 다시 작성하기를 반복해 보았지만, 기존과 동일한 결과를 보여주었습니다. 이때 무언가 잘못됨을 깨닫고 공식문서를 꼼꼼하게 읽어보니 마지막 문장을 발견할 수 있었습니다.&lt;/p&gt;
+&lt;p&gt;&lt;span class=&apos;gatsby-resp-image-wrapper&apos; style=&apos;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 680px; margin-bottom: 16px;&apos;&gt;
+      &lt;a class=&apos;gatsby-resp-image-link&apos; href=&apos;/static/f673359d6b80447b1be4edb83e3d7629/5266f/img_5.png&apos; style=&apos;display: block&apos; target=&apos;_blank&apos; rel=&apos;noopener&apos;&gt;
+    &lt;span class=&apos;gatsby-resp-image-background-image&apos; style=&quot;padding-bottom: 7.0588235294117645%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAABCAYAAADeko4lAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAPElEQVQI1x2JOQ7AQAgD8/9/IjrY5VBS4QgXo/HIj5lBRKCqcHdUFbnnIt7C+ZIdEXRmcnc3vb3sNzP4AQz9TKRyIUECAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;img class=&apos;gatsby-resp-image-image&apos; alt=&apos;img 5&apos; title=&apos;img 5&apos; src=&apos;/static/f673359d6b80447b1be4edb83e3d7629/ca1dc/img_5.png&apos; srcset=&apos;/static/f673359d6b80447b1be4edb83e3d7629/e7570/img_5.png 170w,
+/static/f673359d6b80447b1be4edb83e3d7629/f46e7/img_5.png 340w,
+/static/f673359d6b80447b1be4edb83e3d7629/ca1dc/img_5.png 680w,
+/static/f673359d6b80447b1be4edb83e3d7629/02d09/img_5.png 1020w,
+/static/f673359d6b80447b1be4edb83e3d7629/9d567/img_5.png 1360w,
+/static/f673359d6b80447b1be4edb83e3d7629/5266f/img_5.png 1464w&apos; sizes=&apos;(max-width: 680px) 100vw, 680px&apos; style=&apos;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&apos; loading=&apos;lazy&apos; decoding=&apos;async&apos;&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;해당 설정은 &lt;strong&gt;기본적으로 &lt;code class=&quot;language-text&quot;&gt;Nginx&lt;/code&gt; 오픈소스 빌드에 포함되지 않을 수도 있으며 별도의 모듈에 정의되어 있다는 내용&lt;/strong&gt;이였습니다. 결국 일반적인 오픈소스로는 이를 사용할 수 없었고, 수동으로 &lt;code class=&quot;language-text&quot;&gt;Nginx&lt;/code&gt;를 설치하고 필요한 모듈을 붙여주기로 결론을 내렸습니다.&lt;/p&gt;
+&lt;h2&gt;우당탕탕 Nginx 컴파일 설치&lt;/h2&gt;
+&lt;h3&gt;컴파일 환경 만들기&lt;/h3&gt;
+&lt;p&gt;먼저 &lt;code class=&quot;language-text&quot;&gt;Nginx&lt;/code&gt;의 코어 및 모듈들의 동작에 필요한 라이브러리와 기본 패키지에서 제공하는 모듈을 사용할 수 있게 개발자 패키지와 컴파일러가 필요했습니다. 다음 명령어를 통해 이를 수행할 수 있습니다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;apt-get&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;make&lt;/span&gt; libperl-dev libpcre3 libpcre3-dev zlib1g zlib1g-dev openssl libssl-dev libxml2-dev libxslt1-dev libgd-dev libgeoip-dev google-perftools libgoogle-perftools-dev gcc g++&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;그리고 &lt;code class=&quot;language-text&quot;&gt;Nginx&lt;/code&gt; 사이트에서 &lt;code class=&quot;language-text&quot;&gt;Nginx&lt;/code&gt;파일들을 다운 받습니다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;wget&lt;/span&gt; http://nginx.org/download/nginx-1.22.0.tar.gz
+&lt;span class=&quot;token function&quot;&gt;tar&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;-zxf&lt;/span&gt; nginx-1.22.0.tar.gz
+&lt;span class=&quot;token builtin class-name&quot;&gt;cd&lt;/span&gt; nginx-1.22.0&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;span class=&apos;gatsby-resp-image-wrapper&apos; style=&apos;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 680px; margin-bottom: 16px;&apos;&gt;
+      &lt;a class=&apos;gatsby-resp-image-link&apos; href=&apos;/static/a4b78dc1e11956307b5426fe9b89a2ea/d7258/img_6.png&apos; style=&apos;display: block&apos; target=&apos;_blank&apos; rel=&apos;noopener&apos;&gt;
+    &lt;span class=&apos;gatsby-resp-image-background-image&apos; style=&quot;padding-bottom: 6.470588235294117%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAABCAYAAADeko4lAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAUElEQVQI1x3KzRJAIBhGYddhLCxU8yUVCakYP/d/S6/R8jxzKjZndC6hUR61dBjiC+4PyHCDtgutDej3p7RYzvL+rscMYxK4WqFNBNEEJiw+6CYflLY1iucAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;img class=&apos;gatsby-resp-image-image&apos; alt=&apos;img 6&apos; title=&apos;img 6&apos; src=&apos;/static/a4b78dc1e11956307b5426fe9b89a2ea/ca1dc/img_6.png&apos; srcset=&apos;/static/a4b78dc1e11956307b5426fe9b89a2ea/e7570/img_6.png 170w,
+/static/a4b78dc1e11956307b5426fe9b89a2ea/f46e7/img_6.png 340w,
+/static/a4b78dc1e11956307b5426fe9b89a2ea/ca1dc/img_6.png 680w,
+/static/a4b78dc1e11956307b5426fe9b89a2ea/d7258/img_6.png 966w&apos; sizes=&apos;(max-width: 680px) 100vw, 680px&apos; style=&apos;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&apos; loading=&apos;lazy&apos; decoding=&apos;async&apos;&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;Nginx&lt;/code&gt;까지 다운을 받았다면, &lt;code class=&quot;language-text&quot;&gt;Nginx&lt;/code&gt;의 환경설정을 진행해줍니다. 기본 패키지에서 제공하는 모든 기능과 모듈, 실행 파일 위치와 각 기능에 필요한 디렉토리를 설정하는 것을 포함하도록 설정 파일을 작성합니다. &lt;strong&gt;여기서 유의해야 할 점은 &lt;code class=&quot;language-text&quot;&gt;Nginx&lt;/code&gt;는 새로운 모듈을 추가해주기 위해서 재컴파일&lt;/strong&gt;을 해야 합니다. 저는 향후 번거롭지 않도록 패키지에 포함된 모든 모듈을 사용할 수 있도록 작성을 합니다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;./configure &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+--sbin-path&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;/usr/local/sbin/nginx &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+--conf-path&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;/usr/local/nginx/nginx.conf &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+--pid-path&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;/var/run/nginx.pid &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+--with-http_ssl_module &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+--with-http_v2_module &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+--with-http_realip_module &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+--with-http_addition_module &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+--with-http_xslt_module &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+--with-http_image_filter_module &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+--with-http_geoip_module &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+--with-http_sub_module &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+--with-http_dav_module &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+--with-http_flv_module &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+--with-http_mp4_module &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+--with-http_gunzip_module &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+--with-http_gzip_static_module &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+--with-http_auth_request_module &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+--with-http_random_index_module &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+--with-http_secure_link_module &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+--with-http_slice_module &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+--with-http_degradation_module &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+--with-http_stub_status_module &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+--with-http_perl_module &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+--with-mail &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+--with-mail_ssl_module &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+--with-stream &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+--with-stream_ssl_module &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+--with-google_perftools_module &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+--with-cpp_test_module &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+--with-debug&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;보통 저희가 사용하는 &lt;code class=&quot;language-text&quot;&gt;apt&lt;/code&gt; 혹은 &lt;code class=&quot;language-text&quot;&gt;apt-get&lt;/code&gt;을 사용해 &lt;code class=&quot;language-text&quot;&gt;Nginx&lt;/code&gt;를 설치하게 되면, 설정 파일이 위치하는 디렉토리가 &lt;code class=&quot;language-text&quot;&gt;/etc/nginx&lt;/code&gt;에 위치하게 됩니다. 하지만 수동으로 설치를 해주게 되면 &lt;code class=&quot;language-text&quot;&gt;/usr/local/nginx&lt;/code&gt;에서 위치하게 됩니다.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;(만약 &lt;code class=&quot;language-text&quot;&gt;Let’s Encrypt&lt;/code&gt;를 사용한다면 해당 설정은 조금 문제가 있기 때문에, 밑의 트러블 슈팅을 참고하시면 됩니다!!)&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;해당 설정 입력 후 실행을 하게 되면, 특별한 문제가 없을 경우 설정 관련 옵션들이 추가되며 컴파일을 할 준비가 끝나게 됩니다.&lt;/p&gt;
+&lt;h3&gt;Nginx 컴파일하기&lt;/h3&gt;
+&lt;p&gt;이제 &lt;code class=&quot;language-text&quot;&gt;make&lt;/code&gt; 명령어를 통해서 컴파일을 시작합니다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;make&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;역시 컴파일도 문제가 없다면 다음과 같은 화면을 만날 수 있습니다.&lt;/p&gt;
+&lt;p&gt;&lt;span class=&apos;gatsby-resp-image-wrapper&apos; style=&apos;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 680px; margin-bottom: 16px;&apos;&gt;
+      &lt;a class=&apos;gatsby-resp-image-link&apos; href=&apos;/static/f1684bac58268ad413c0b55690f893fc/d1716/img_7.png&apos; style=&apos;display: block&apos; target=&apos;_blank&apos; rel=&apos;noopener&apos;&gt;
+    &lt;span class=&apos;gatsby-resp-image-background-image&apos; style=&quot;padding-bottom: 4.117647058823529%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAABCAYAAADeko4lAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAR0lEQVQI12NQM7L6r2po+d/M0fO/oY3Lf31rZzDWs3T6bwCkQWKKuqb/tc3t/1s4ef83sfcAYvf/xnZuYDlTB0+wGEgeZBYAJw4hU5rog3oAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;img class=&apos;gatsby-resp-image-image&apos; alt=&apos;img 7&apos; title=&apos;img 7&apos; src=&apos;/static/f1684bac58268ad413c0b55690f893fc/ca1dc/img_7.png&apos; srcset=&apos;/static/f1684bac58268ad413c0b55690f893fc/e7570/img_7.png 170w,
+/static/f1684bac58268ad413c0b55690f893fc/f46e7/img_7.png 340w,
+/static/f1684bac58268ad413c0b55690f893fc/ca1dc/img_7.png 680w,
+/static/f1684bac58268ad413c0b55690f893fc/d1716/img_7.png 774w&apos; sizes=&apos;(max-width: 680px) 100vw, 680px&apos; style=&apos;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&apos; loading=&apos;lazy&apos; decoding=&apos;async&apos;&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;컴파일도 문제가 없다면 이제 설치를 진행합니다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;make&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;설치에 문제가 없다면, 이제 &lt;code class=&quot;language-text&quot;&gt;Nginx&lt;/code&gt;를 실행할 수 있습니다. 아까의 환경 설정에서 지정한 설정 파일 경로로 이동한 후,  &lt;code class=&quot;language-text&quot;&gt;nginx.conf&lt;/code&gt;에서 원하는 대로 &lt;code class=&quot;language-text&quot;&gt;Nginx&lt;/code&gt;를 설정한 다음 서비스를 시작하면 &lt;code class=&quot;language-text&quot;&gt;Nginx&lt;/code&gt;를 구동할 수 있습니다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;# Nginx 폴더 위치 찾기&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;find&lt;/span&gt; &lt;span class=&quot;token builtin class-name&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;-name&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;*nginx*&quot;&lt;/span&gt;
+
+&lt;span class=&quot;token comment&quot;&gt;# Nginx 설정 파일인 nginx.conf로 이동 (sudo vim을 활용해 설정 수정)&lt;/span&gt;
+&lt;span class=&quot;token builtin class-name&quot;&gt;cd&lt;/span&gt; /usr/local/nginx
+
+&lt;span class=&quot;token comment&quot;&gt;# Nginx 서비스 시작&lt;/span&gt;
+/usr/local/sbin/nginx&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;span class=&apos;gatsby-resp-image-wrapper&apos; style=&apos;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 680px; margin-bottom: 16px;&apos;&gt;
+      &lt;a class=&apos;gatsby-resp-image-link&apos; href=&apos;/static/9d71b27a9a2208e6896fcb875053792e/d1716/img_8.png&apos; style=&apos;display: block&apos; target=&apos;_blank&apos; rel=&apos;noopener&apos;&gt;
+    &lt;span class=&apos;gatsby-resp-image-background-image&apos; style=&quot;padding-bottom: 11.76470588235294%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAACCAYAAABYBvyLAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAiElEQVQI1x3NSxKCMBBFUVehVTpRkb9JJYJAIIhQoDP2v5tr46AH/er16V1ia7JnT2QdN9OQlp68HkglM37mqiuOkcJ/VrQbsZLdmzfF8OXRL1xUzSk27IOMQ5CzC3WJkkIiUGgbGSf7SF69sHIQFx3KTbTLKtjyhzZww0w3k7UeO42cVSmPNT8DG0AqGWMSNAAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;img class=&apos;gatsby-resp-image-image&apos; alt=&apos;img 8&apos; title=&apos;img 8&apos; src=&apos;/static/9d71b27a9a2208e6896fcb875053792e/ca1dc/img_8.png&apos; srcset=&apos;/static/9d71b27a9a2208e6896fcb875053792e/e7570/img_8.png 170w,
+/static/9d71b27a9a2208e6896fcb875053792e/f46e7/img_8.png 340w,
+/static/9d71b27a9a2208e6896fcb875053792e/ca1dc/img_8.png 680w,
+/static/9d71b27a9a2208e6896fcb875053792e/d1716/img_8.png 774w&apos; sizes=&apos;(max-width: 680px) 100vw, 680px&apos; style=&apos;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&apos; loading=&apos;lazy&apos; decoding=&apos;async&apos;&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;그리고 압축하고자 하는 &lt;code class=&quot;language-text&quot;&gt;bundle.js&lt;/code&gt;가 잘 전달되었는지 확인을 해보면…&lt;/p&gt;
+&lt;p&gt;&lt;span class=&apos;gatsby-resp-image-wrapper&apos; style=&apos;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 680px; margin-bottom: 16px;&apos;&gt;
+      &lt;a class=&apos;gatsby-resp-image-link&apos; href=&apos;/static/89717572bee198461b790fc2d3a09578/c1e63/img_9.png&apos; style=&apos;display: block&apos; target=&apos;_blank&apos; rel=&apos;noopener&apos;&gt;
+    &lt;span class=&apos;gatsby-resp-image-background-image&apos; style=&quot;padding-bottom: 5.88235294117647%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAABCAYAAADeko4lAAAACXBIWXMAAAsTAAALEwEAmpwYAAAARUlEQVQI1x2LSQrAMAwD+xYblRKTzTmk9P//Uu0cBoQ0uvZ62PpgD6YvjukEbqoISzGaGVWVtbbTeTjpSmQAh9zzs9+PP6rGHd39bIPYAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;img class=&apos;gatsby-resp-image-image&apos; alt=&apos;img 9&apos; title=&apos;img 9&apos; src=&apos;/static/89717572bee198461b790fc2d3a09578/ca1dc/img_9.png&apos; srcset=&apos;/static/89717572bee198461b790fc2d3a09578/e7570/img_9.png 170w,
+/static/89717572bee198461b790fc2d3a09578/f46e7/img_9.png 340w,
+/static/89717572bee198461b790fc2d3a09578/ca1dc/img_9.png 680w,
+/static/89717572bee198461b790fc2d3a09578/02d09/img_9.png 1020w,
+/static/89717572bee198461b790fc2d3a09578/9d567/img_9.png 1360w,
+/static/89717572bee198461b790fc2d3a09578/c1e63/img_9.png 1680w&apos; sizes=&apos;(max-width: 680px) 100vw, 680px&apos; style=&apos;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&apos; loading=&apos;lazy&apos; decoding=&apos;async&apos;&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;드디어!! 정상적으로 압축된 파일이 넘어온 것을 확인할 수 있습니다!!&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;참고. Nginx 서비스 명령어&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;# Nginx 서비스 시작&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; /usr/local/sbin/nginx 
+
+&lt;span class=&quot;token comment&quot;&gt;# Nginx 서비스 정지&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; /usr/local/sbin/nginx &lt;span class=&quot;token parameter variable&quot;&gt;-s&lt;/span&gt; stop 
+
+&lt;span class=&quot;token comment&quot;&gt;# Nginx 서비스 재시작&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; /usr/local/sbin/nginx &lt;span class=&quot;token parameter variable&quot;&gt;-s&lt;/span&gt; reload 
+
+&lt;span class=&quot;token comment&quot;&gt;# Nginx 서비스 설정 파일 syntax 테스트&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; /usr/local/sbin/nginx &lt;span class=&quot;token parameter variable&quot;&gt;-t&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;트러블 슈팅하기&lt;/h2&gt;
+&lt;p&gt;압축 파일 전송까지 잘 되었기 때문에 모든 기능이 정상적으로 잘 동작할 것이라 생각했지만, 아쉽게도 그러지 못했습니다.&lt;/p&gt;
+&lt;h3&gt;URL로 직접 접근할 경우 발생하는 404&lt;/h3&gt;
+&lt;p&gt;처음으로 마주한 문제는 특정 페이지로 이동할 경우 404가 발생하는 상황이 있었습니다.&lt;/p&gt;
+&lt;p&gt;&lt;span class=&apos;gatsby-resp-image-wrapper&apos; style=&apos;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 680px; margin-bottom: 16px;&apos;&gt;
+      &lt;a class=&apos;gatsby-resp-image-link&apos; href=&apos;/static/af79ccc75c2759dff930f5c0b199531c/b66f5/img_10.png&apos; style=&apos;display: block&apos; target=&apos;_blank&apos; rel=&apos;noopener&apos;&gt;
+    &lt;span class=&apos;gatsby-resp-image-background-image&apos; style=&quot;padding-bottom: 24.11764705882353%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAFCAYAAABFA8wzAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA90lEQVQY032MW0rDQBiFsxM1aVMoVpNeAqIICl2Cj1aakkCnTqalC3BxeclLHrKRXCAPyeRynBkpFKH94eOfc/4zR5svnmBPHUwebExnL3AcoR8tmKMxdMPEnT6EPhjBENzcDgSG8u8nFobmGJa9wNv7EsvXD8xnz9DILgCle3zTAzb+DxhlOBIPZMfg+VusXQ9bQkEEqy8X7sYX2T2C4KDen6u1ujN2hOzSmqbBibbl4Jyj64E0TRGGIeI4ViRJgiiKUBQF+r4XuQZd1yn+/nO1tZP5n7ZtVXlZlsjzXO26rpV/njnXkouFEjmyKMsyVFWl9LW85BfUMjTjik6M3QAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;img class=&apos;gatsby-resp-image-image&apos; alt=&apos;img 10&apos; title=&apos;img 10&apos; src=&apos;/static/af79ccc75c2759dff930f5c0b199531c/ca1dc/img_10.png&apos; srcset=&apos;/static/af79ccc75c2759dff930f5c0b199531c/e7570/img_10.png 170w,
+/static/af79ccc75c2759dff930f5c0b199531c/f46e7/img_10.png 340w,
+/static/af79ccc75c2759dff930f5c0b199531c/ca1dc/img_10.png 680w,
+/static/af79ccc75c2759dff930f5c0b199531c/02d09/img_10.png 1020w,
+/static/af79ccc75c2759dff930f5c0b199531c/9d567/img_10.png 1360w,
+/static/af79ccc75c2759dff930f5c0b199531c/b66f5/img_10.png 1668w&apos; sizes=&apos;(max-width: 680px) 100vw, 680px&apos; style=&apos;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&apos; loading=&apos;lazy&apos; decoding=&apos;async&apos;&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;404가 발생한다는 것은, 라우팅 경로가 문제가 있다는 의미이므로 &lt;code class=&quot;language-text&quot;&gt;location&lt;/code&gt; 설정을 수정해주어야 했습니다. 그래서 다음과 같이 해당 경로의 파일을 찾지 못할 경우 최상위 &lt;code class=&quot;language-text&quot;&gt;html&lt;/code&gt;인 &lt;code class=&quot;language-text&quot;&gt;/index.html&lt;/code&gt;로 이동하는 설정을 추가해주면서 404 문제를 해결할 수 있었습니다.&lt;/p&gt;
+&lt;p&gt;&lt;span class=&apos;gatsby-resp-image-wrapper&apos; style=&apos;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 680px; margin-bottom: 16px;&apos;&gt;
+      &lt;a class=&apos;gatsby-resp-image-link&apos; href=&apos;/static/e433fcbaf1e7f001c9de4cfce7aed1a4/249e2/img_11.png&apos; style=&apos;display: block&apos; target=&apos;_blank&apos; rel=&apos;noopener&apos;&gt;
+    &lt;span class=&apos;gatsby-resp-image-background-image&apos; style=&quot;padding-bottom: 22.941176470588236%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAFCAYAAABFA8wzAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA90lEQVQY0z2Q3ZKCMAyFeQlFEEVKRWnLT6kCI7Lu4HCx+/7vczYtixdn0qTtd5J4PlfYphKXqkbTGZjeIC00krJFcC4Q0L2Nu7NyCrMSQUY51X0u4bu4niU8lxBwT49iUeKQKWTDgHx+Q3QvNNMP6nFGN/2i6L+hSKL9wlEa18juA1QrcHGxlxtGSgSiogUfJhyqDowAzDwg7yNOFsKEa2Cb5O68Ybn7u3K8tVXr5NwIGjc3gmnw5wOxuZEGRLrD6f5Eonuwugd/zeDtCEXdMlqPn36Ay8gxudtdWbfwWiJSGmFeLbrWpP94qdweQ6FdLbI1yteR/wACgZLNxb7zwAAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;img class=&apos;gatsby-resp-image-image&apos; alt=&apos;img 11&apos; title=&apos;img 11&apos; src=&apos;/static/e433fcbaf1e7f001c9de4cfce7aed1a4/ca1dc/img_11.png&apos; srcset=&apos;/static/e433fcbaf1e7f001c9de4cfce7aed1a4/e7570/img_11.png 170w,
+/static/e433fcbaf1e7f001c9de4cfce7aed1a4/f46e7/img_11.png 340w,
+/static/e433fcbaf1e7f001c9de4cfce7aed1a4/ca1dc/img_11.png 680w,
+/static/e433fcbaf1e7f001c9de4cfce7aed1a4/249e2/img_11.png 810w&apos; sizes=&apos;(max-width: 680px) 100vw, 680px&apos; style=&apos;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&apos; loading=&apos;lazy&apos; decoding=&apos;async&apos;&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;h3&gt;HTTPS 미적용&lt;/h3&gt;
+&lt;p&gt;404 까지 해결되었기 때문에 더 이상의 문제는 없을 것이라 생각했으나, 다음과 같이 &lt;code class=&quot;language-text&quot;&gt;HTTPS&lt;/code&gt;가 적용되지 않은 것을 확인할 수 있었습니다.&lt;/p&gt;
+&lt;p&gt;&lt;span class=&apos;gatsby-resp-image-wrapper&apos; style=&apos;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 680px; margin-bottom: 16px;&apos;&gt;
+      &lt;a class=&apos;gatsby-resp-image-link&apos; href=&apos;/static/d3176239551ed5f7fd4fc5f176c49786/1e0c2/img_12.png&apos; style=&apos;display: block&apos; target=&apos;_blank&apos; rel=&apos;noopener&apos;&gt;
+    &lt;span class=&apos;gatsby-resp-image-background-image&apos; style=&quot;padding-bottom: 61.76470588235294%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAYAAABiDJ37AAAACXBIWXMAAAsTAAALEwEAmpwYAAACGElEQVQoz3WS604aURSFeRULcpkB5s5cGLnYWiimTdqkD2BqbNJatU1MfEmh8AuBFyCBP9whwOo6p8GowR8re5/JOd+sfYnkwxI8/whBvoh8WGQsoFR+h+O372E7Lkwrh1zOh+sGMEwbum5BUTKIxRI4jKegG/xmOMwVHLyJI3J98wc/L69x+esG384v4PDxUfEYxfIJSoSGzLO6jYNoHFECYkIJBUk1K+9eXf3G7e0dLr7/wNnZOSKTyQTj8Rir1QrthwdkswYyvOzRjWcIWQjM/9Hn2WcM6dpUM6hUauj3+5hNZxCc2WyGyHw+l8lms0Gn24XLx6Hl4MQL4PJxjiUKuK2bMncYxR0BrFZPMRwOpRnBEKyISKbTKdbrNboEpuhOo8uQvXSDAjz21vHyjAXk/BCOm0cuKEKzA1QIHAwGWCwWkiEdvgSqBOqWT0iBQ/Fkn4Rsh2IUQ7K9MrJWAdUPHyVwuVxK2F5gOqNBSetQqQSbn0iqz5RMpZFS0pxojA5rsuS9QNnDTgcuyxPS2b84gQodP5VF1z5boagaaqefXne42awlUOMksxoHwL2zbFdC43QWT6gyFy5T3MPoYfKxh6+W3Ov15HJ7bL5YbLHgYpkN03kmk1sgfvr5y9f9Je9GPhqN0Gq1UK83cH9fZ6yj2WziL9V8oUajgXa7Lc3sVu9xD3cfRBS93Aptt1Li/JpEVU/fCv0D3str/SKLFswAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;img class=&apos;gatsby-resp-image-image&apos; alt=&apos;img 12&apos; title=&apos;img 12&apos; src=&apos;/static/d3176239551ed5f7fd4fc5f176c49786/ca1dc/img_12.png&apos; srcset=&apos;/static/d3176239551ed5f7fd4fc5f176c49786/e7570/img_12.png 170w,
+/static/d3176239551ed5f7fd4fc5f176c49786/f46e7/img_12.png 340w,
+/static/d3176239551ed5f7fd4fc5f176c49786/ca1dc/img_12.png 680w,
+/static/d3176239551ed5f7fd4fc5f176c49786/02d09/img_12.png 1020w,
+/static/d3176239551ed5f7fd4fc5f176c49786/1e0c2/img_12.png 1076w&apos; sizes=&apos;(max-width: 680px) 100vw, 680px&apos; style=&apos;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&apos; loading=&apos;lazy&apos; decoding=&apos;async&apos;&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;분명 설정 파일에는 &lt;code class=&quot;language-text&quot;&gt;HTTPS&lt;/code&gt;를 위한 설정이 다 되었기 때문에 적용이 되어야 했지만, 다음 화면처럼 적용이 되지 않은 것을 확인할 수 있었습니다. 몇번의 검색끝에 그 이유를 알 수 있었는데, 원인은 &lt;code class=&quot;language-text&quot;&gt;nginx.conf&lt;/code&gt;가 저장되는 위치가 다르기 때문이였습니다.&lt;/p&gt;
+&lt;p&gt;위에서 설명했듯이 기존처럼 &lt;code class=&quot;language-text&quot;&gt;apt&lt;/code&gt;, &lt;code class=&quot;language-text&quot;&gt;apt-get&lt;/code&gt;을 통해서 &lt;code class=&quot;language-text&quot;&gt;Nginx&lt;/code&gt;를 설치하게 되면 &lt;code class=&quot;language-text&quot;&gt;/etc/nginx&lt;/code&gt; 에 위치하게 되지만, 수동으로 설치하면 &lt;code class=&quot;language-text&quot;&gt;/usr/local/nginx&lt;/code&gt; 에 위치하게 됩니다. 여기서 문제는 저희가 &lt;code class=&quot;language-text&quot;&gt;HTTPS&lt;/code&gt; 적용을 위해서 사용하는 &lt;code class=&quot;language-text&quot;&gt;Let’s Encrypt&lt;/code&gt;가 &lt;code class=&quot;language-text&quot;&gt;/etc/nginx&lt;/code&gt; 를 기준으로 설정이 적용된다는 점입니다.&lt;/p&gt;
+&lt;p&gt;결국 기존과 동일하게 적용을 해주기 위해서 다음과 같이 &lt;code class=&quot;language-text&quot;&gt;nginx.conf&lt;/code&gt;의 설정 위치를 변경해주는 환경 설정 옵션을 작성하고, 기존과 동일하게 설치 작업을 다시 진행주었습니다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;# 기존의 nginx.conf 위치&lt;/span&gt;
+--conf-path&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;/usr/local/nginx/nginx.conf &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+
+&lt;span class=&quot;token comment&quot;&gt;# 변경할 nginx.conf 위치&lt;/span&gt;
+&lt;span class=&quot;token parameter variable&quot;&gt;--prefix&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;/usr/share/nginx &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+--conf-path&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;/etc/nginx/nginx.conf &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+--error-log-path&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;/var/log/error.log &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+--http-log-path&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;/var/log/access.log &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;# 변경된 설정&lt;/span&gt;
+./configure &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+--sbin-path&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;/usr/local/sbin/nginx &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+&lt;span class=&quot;token parameter variable&quot;&gt;--prefix&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;/usr/share/nginx &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+--conf-path&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;/etc/nginx/nginx.conf &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+--error-log-path&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;/var/log/error.log &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+--http-log-path&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;/var/log/access.log &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+--pid-path&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;/var/run/nginx.pid &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+--with-http_ssl_module &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+--with-http_v2_module &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+--with-http_realip_module &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+--with-http_addition_module &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+--with-http_xslt_module &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+--with-http_image_filter_module &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+--with-http_geoip_module &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+--with-http_sub_module &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+--with-http_dav_module &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+--with-http_flv_module &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+--with-http_mp4_module &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+--with-http_gunzip_module &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+--with-http_gzip_static_module &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+--with-http_auth_request_module &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+--with-http_random_index_module &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+--with-http_secure_link_module &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+--with-http_slice_module &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+--with-http_degradation_module &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+--with-http_stub_status_module &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+--with-http_perl_module &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+--with-mail &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+--with-mail_ssl_module &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+--with-stream &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+--with-stream_ssl_module &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+--with-google_perftools_module &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+--with-cpp_test_module &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+--with-debug&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;여기까지 완료한다면 기존과 동일하게 서비스를 적용할 수 있으며 &lt;code class=&quot;language-text&quot;&gt;gzip&lt;/code&gt; 까지 깔끔하게 적용된 것을 확인할 수 있습니다.&lt;/p&gt;
+&lt;p&gt;&lt;span class=&apos;gatsby-resp-image-wrapper&apos; style=&apos;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 680px; margin-bottom: 16px;&apos;&gt;
+      &lt;a class=&apos;gatsby-resp-image-link&apos; href=&apos;/static/62f847b90f2c38f63df10e4dc42b9e6c/ba099/img_13.png&apos; style=&apos;display: block&apos; target=&apos;_blank&apos; rel=&apos;noopener&apos;&gt;
+    &lt;span class=&apos;gatsby-resp-image-background-image&apos; style=&quot;padding-bottom: 35.88235294117647%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAHCAYAAAAIy204AAAACXBIWXMAAAsTAAALEwEAmpwYAAABq0lEQVQoz22RS08TYRSG55cQoO30QlvaYjttp7eZVpvUpjOtaIIkbpS48HexcW1cmLCAaEww3BIntJoQJSFIAIvQmQZJ5/GbMeJCF0++cxbve95zPklvNClXauQLJSpVjWKxTDyRYmY2xGxA/i+BYJhAIPy7DkUICjxNPJFGyizkUPIqaqlKUa2QU4rE5pKE5ChyOHb7JpJpDKOH2V1EVavo9SbtThfDXMTsPaQu+nyhjFTTGr5JtVYXCXVK5RrZXIF0Jos37E42z3xqQQjusvV2nYOPuwz2tvm0+Y7+m9fsvF+nv72Jtd/HsiwkTW/4cT2hZ+Sl/ZNU8c+gkxV1q3Uf5/QIbmy4HsHFMZwcMPn2GcaXTADXnSDda7Z8o+R8xl8vGksQicaJROb8QZ6xdxtNqzPY/QBX3/k5PGFyee6D4PrqgpFtYwskL40sxCmxYlKsNj0TEh8i/0Ucfmo6iKIUePVyla2NNb5aO2APheGZMDzjZvQDZzxm7DhIz1ae03vwiMfLT1haWsbsGJiGeUvX6NJud3ix8hRnIBIe7eN+2cM9PcQdDf8x/AULfUP0xcAFmgAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;img class=&apos;gatsby-resp-image-image&apos; alt=&apos;img 13&apos; title=&apos;img 13&apos; src=&apos;/static/62f847b90f2c38f63df10e4dc42b9e6c/ca1dc/img_13.png&apos; srcset=&apos;/static/62f847b90f2c38f63df10e4dc42b9e6c/e7570/img_13.png 170w,
+/static/62f847b90f2c38f63df10e4dc42b9e6c/f46e7/img_13.png 340w,
+/static/62f847b90f2c38f63df10e4dc42b9e6c/ca1dc/img_13.png 680w,
+/static/62f847b90f2c38f63df10e4dc42b9e6c/02d09/img_13.png 1020w,
+/static/62f847b90f2c38f63df10e4dc42b9e6c/ba099/img_13.png 1190w&apos; sizes=&apos;(max-width: 680px) 100vw, 680px&apos; style=&apos;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&apos; loading=&apos;lazy&apos; decoding=&apos;async&apos;&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;참고자료&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;https://docs.nginx.com/nginx/admin-guide/web-server/compression/&quot;&gt;https://docs.nginx.com/nginx/admin-guide/web-server/compression/&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Replication과 Spring Boot]]></title><description><![CDATA[…]]></description><link>https://wishoon.github.io/Replication과-SpringBoot/</link><guid isPermaLink="false">https://wishoon.github.io/Replication과-SpringBoot/</guid><pubDate>Sun, 16 Oct 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;사용배경&lt;/h2&gt;
 &lt;p&gt;현재 진행하고 있는 프로젝트에서 쿠폰 시스템을 만들고 있습니다. 현재 시스템상 내부 인원들만 사용을 하고 있기 때문에 부하에 대한 문제를 걱정하지 않아도 되지만, 해당 시스템이 실제 상용서비스가 되어 많은 사용자들이 사용한다고 가정한다면 분명 서버와 DB에 많은 부하가 오게 될 것입니다.&lt;/p&gt;
 &lt;p&gt;이번 글에서는 &lt;strong&gt;부하 분산 중 DB에서의 처리 방법을 한번 고민&lt;/strong&gt;해보고자 합니다. 그리고 고민의 결과와 적용한 과정에 대해서도 함께 작성해보려고 합니다.&lt;/p&gt;
 &lt;h2&gt;DB 성능 확장 방법&lt;/h2&gt;
