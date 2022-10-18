@@ -103,11 +103,11 @@ CREATE TABLE user(
 );
 ```
 
-`Replication` 에 필요한 전용 MySQL 계정을 생성해주고, `Replication` 권한을 부여해 줍니다. 이 계정은 `Slave` 서버에서 `Master` 서버에 접근할 때 사용이 됩니다.
+`Replication` 에 필요한 전용 계정을 생성해주고, `Replication`을 위한 권한을 부여해 줍니다. `root`를 사용할 경우 보안상 문제가 될 수 있기 때문에, 다음과 같이 `Slave` 권한을 부여해 줍니다.
 
 ```java
-CREATE USER 'replication'@'%' IDENTIFIED BY 'password';
-GRANT REPLICATION SLAVE ON *.* TO 'replication'@'%';
+CREATE USER 'master'@'%' IDENTIFIED BY 'password';
+GRANT REPLICATION SLAVE ON *.* TO 'master'@'%';
 ```
 
 그리고 MySQL 설정 변경을 위해 `my.cnf` 파일로 이동하여 값을 수정해줍니다.
@@ -164,6 +164,15 @@ SHOW MASTER STATUS:
 이어서 위에서 설명했던 내용을 바탕으로 `Slave DB`를 설정해 줍니다.
 
 ```java
+CREATE DATABASE test;
+```
+
+```java
+CREATE USER 'slave'@'%' IDENTIFIED BY 'password';
+GRANT ALL PRIVILEGES ON *.* TO 'slave'@'%';
+```
+
+```java
 $ vim /etc/mysql/my.cnf
 
 [mysqld]
@@ -183,12 +192,6 @@ read_only = 1
 
 ```bash
 sudo systemctl restart mysql
-```
-
-그리고 `Master DB`와 동일한 데이터베이스를 하나 만들어 줍니다. (Replication을 적용하면 데이터베이스도 복재가 될 것이라 생각했는데, 계속 복재가 되지 않는 오류가 발생해서 Slave DB에서도 동일한 데이터베이스를 생성해주었습니다)
-
-```java
-CREATE DATABASE test;
 ```
 
 그리고 최종적으로 `MySQL`에서 아래 쿼리를 실행해주면 됩니다. 여기서 `MASTER_LOG_FILE`과  `MASTER_LOG_POS` 값은 아까 `Master DB STATUS`에서 나온 값으로 설정을 하면 됩니다.
