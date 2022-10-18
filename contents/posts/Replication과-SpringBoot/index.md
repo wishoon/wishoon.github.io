@@ -200,7 +200,7 @@ sudo systemctl restart mysql
 RESET SLAVE;
 
 CHANGE MASTER TO MASTER_HOST='xxx.xxx.x.xxx', // private IP
-        MASTER_USER='replication',
+        MASTER_USER='master',
         MASTER_PASSWORD='password',
         MASTER_LOG_FILE='mysql-bin.00000x',
         MASTER_LOG_POS=157;
