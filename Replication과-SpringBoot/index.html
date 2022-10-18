@@ -314,7 +314,7 @@ read_only <span class="token operator">=</span> <span class="token number">1</sp
 <div class="gatsby-highlight" data-language="java"><pre class="language-java"><code class="language-java"><span class="token class-name">RESET</span> <span class="token constant">SLAVE</span><span class="token punctuation">;</span>
 
 <span class="token constant">CHANGE</span> <span class="token constant">MASTER</span> <span class="token class-name">TO</span> <span class="token constant">MASTER_HOST</span><span class="token operator">=</span>'xxx<span class="token punctuation">.</span>xxx<span class="token punctuation">.</span>x<span class="token punctuation">.</span>xxx'<span class="token punctuation">,</span> <span class="token comment">// private IP</span>
-        <span class="token constant">MASTER_USER</span><span class="token operator">=</span>'replication'<span class="token punctuation">,</span>
+        <span class="token constant">MASTER_USER</span><span class="token operator">=</span><span class="token char">'master'</span><span class="token punctuation">,</span>
         <span class="token constant">MASTER_PASSWORD</span><span class="token operator">=</span>'password'<span class="token punctuation">,</span>
         <span class="token constant">MASTER_LOG_FILE</span><span class="token operator">=</span>'mysql<span class="token operator">-</span>bin<span class="token punctuation">.</span><span class="token number">00000</span>x'<span class="token punctuation">,</span>
         <span class="token constant">MASTER_LOG_POS</span><span class="token operator">=</span><span class="token number">157</span><span class="token punctuation">;</span>
