@@ -201,6 +201,7 @@ RESET SLAVE;
 
 CHANGE MASTER TO MASTER_HOST='xxx.xxx.x.xxx', // private IP
         MASTER_USER='master',
+        MASTER_PORT=8080,                     // 내부적인 이슈로 8080 포트로 연결
         MASTER_PASSWORD='password',
         MASTER_LOG_FILE='mysql-bin.00000x',
         MASTER_LOG_POS=157;
@@ -208,7 +209,15 @@ CHANGE MASTER TO MASTER_HOST='xxx.xxx.x.xxx', // private IP
 START REPLICA;
 ```
 
-지금까지 잘 설정이 되었다면, `Master DB` 서버에서 테이블 생성과 데이터 생성을 해보면 바로 `Slave DB` 서버에 잘 반영되는 것을 확인할 수 있습니다.
+지금까지 잘 설정이 되었다면, 다음 명령어를 입력했을 때 문제가 없다는 것을 확인할 수 있습니다.
+
+``` java
+show slave status\G;
+```
+
+![](img_12.png)
+
+추가적으로 `Master DB` 서버에서 테이블 생성과 데이터 생성을 해보면 바로 `Slave DB` 서버에 잘 반영되는 것을 확인할 수 있습니다.
 
 [Master DB]
 
