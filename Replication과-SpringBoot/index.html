@@ -315,12 +315,23 @@ read_only <span class="token operator">=</span> <span class="token number">1</sp
 
 <span class="token constant">CHANGE</span> <span class="token constant">MASTER</span> <span class="token class-name">TO</span> <span class="token constant">MASTER_HOST</span><span class="token operator">=</span>'xxx<span class="token punctuation">.</span>xxx<span class="token punctuation">.</span>x<span class="token punctuation">.</span>xxx'<span class="token punctuation">,</span> <span class="token comment">// private IP</span>
         <span class="token constant">MASTER_USER</span><span class="token operator">=</span><span class="token char">'master'</span><span class="token punctuation">,</span>
+        <span class="token constant">MASTER_PORT</span><span class="token operator">=</span><span class="token number">8080</span><span class="token punctuation">,</span>                     <span class="token comment">// 내부적인 이슈로 8080 포트로 연결</span>
         <span class="token constant">MASTER_PASSWORD</span><span class="token operator">=</span>'password'<span class="token punctuation">,</span>
         <span class="token constant">MASTER_LOG_FILE</span><span class="token operator">=</span>'mysql<span class="token operator">-</span>bin<span class="token punctuation">.</span><span class="token number">00000</span>x'<span class="token punctuation">,</span>
         <span class="token constant">MASTER_LOG_POS</span><span class="token operator">=</span><span class="token number">157</span><span class="token punctuation">;</span>
 
 <span class="token class-name">START</span> <span class="token constant">REPLICA</span><span class="token punctuation">;</span></code></pre></div>
-<p>지금까지 잘 설정이 되었다면, <code class="language-text">Master DB</code> 서버에서 테이블 생성과 데이터 생성을 해보면 바로 <code class="language-text">Slave DB</code> 서버에 잘 반영되는 것을 확인할 수 있습니다.</p>
+<p>지금까지 잘 설정이 되었다면, 다음 명령어를 입력했을 때 문제가 없다는 것을 확인할 수 있습니다.</p>
+<div class="gatsby-highlight" data-language="java"><pre class="language-java"><code class="language-java">show slave status\<span class="token class-name">G</span><span class="token punctuation">;</span></code></pre></div>
+<p><span class='gatsby-resp-image-wrapper' style='position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 629px; margin-bottom: 16px;'>
+      <a class='gatsby-resp-image-link' href='/static/1b3a1fee510412f41c8f794d99d32f26/7e5f2/img_12.png' style='display: block' target='_blank' rel='noopener'>
+    <span class='gatsby-resp-image-background-image' style="padding-bottom: 114.11764705882352%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAXCAYAAAALHW+jAAAACXBIWXMAAAsTAAALEwEAmpwYAAACpElEQVQ4y52VWXPaUAyFeWs77bSJMZiAAS8YbxgwZt+X7P///6g68lLaCUzog+bahHxXOjoSpWC6I2+8Jn+6pd78wLGX04gmZA3mZA8X1IkXfM7J7E/J4WdrMCOt06Oq3UvPsygVH9ohGb0JDVYnijdPcknTCahhe6S1HTLChNq9MdkMsxhcc6ILwE76oWoGVHcHAhuuHyngjMPZjjS+SDV9qvApYQUSH8EEmKfe9EcCG6weKdm9SulusqRWEJPD5erekFTDowrglv8hLCs5pFq3L5oBiJgc3iiYbKhueVTWTapyyUrDpF+1FkeT7urGdeADAyE6YMnuRYD95YlCzrLF2nXiJTWDJCszugjLSo5EP3QQoGSbAqPFUS7KdcPFuTwSl4Aqf7nhDrkRT4WGk/0budzlsuEXGV3L6i+g7sdZI14Eig4jS9gGmX0WVADrnB0CvkLA1LjATdYXzXsVCI2gD8TH1CBDlAwN0flKrt1ngbk+yC63zfT4LsAOj11ufO0WIDLEWMHMGL3UNkeRovo/GUJ8lDvmCUFmmBSPjZ3DbtPQCos5hn7R4iAdR7ll07+9y81gVJSb+vBEo+2zLAcY++aSAQMUXXZGy7Qx7EcAG16qYTod4VlclqGE7j50B/Iln3VDufHmmY29IU282ZfQskifo4srrITMsDChWW6bESYlWdG9bpHStEnRz8MilbdPi5cFktHObKXl20Y105kFFE2BDwH8+lPhuC/iG79/+XFH35Vqtn3+LFzsBAyBAKEhfIeVhU6P96/SHIxhm38WoDOmBhAje29lz6gwrXJG2AvFPnR458GLmGOUjfUPHfGPMLjuxWKtBp9oFk4AsKnwjqTQCwF2uTwY2uUznO1lUmBspe2mZUlpYVbiP3H2W4O//wZozaCgOuMgWwAAAABJRU5ErkJggg=='); background-size: cover; display: block;"></span>
+  <img class='gatsby-resp-image-image' alt='img 12' title='img 12' src='/static/1b3a1fee510412f41c8f794d99d32f26/7e5f2/img_12.png' srcset='/static/1b3a1fee510412f41c8f794d99d32f26/e7570/img_12.png 170w,
+/static/1b3a1fee510412f41c8f794d99d32f26/f46e7/img_12.png 340w,
+/static/1b3a1fee510412f41c8f794d99d32f26/7e5f2/img_12.png 629w' sizes='(max-width: 629px) 100vw, 629px' style='width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;' loading='lazy' decoding='async'>
+  </a>
+    </span></p>
+<p>추가적으로 <code class="language-text">Master DB</code> 서버에서 테이블 생성과 데이터 생성을 해보면 바로 <code class="language-text">Slave DB</code> 서버에 잘 반영되는 것을 확인할 수 있습니다.</p>
 <p>[Master DB]</p>
 <p><span class='gatsby-resp-image-wrapper' style='position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 680px; margin-bottom: 16px;'>
       <a class='gatsby-resp-image-link' href='/static/88e3c52e23d1c8c35efab4512e0ad0b2/9d567/img_10.png' style='display: block' target='_blank' rel='noopener'>
