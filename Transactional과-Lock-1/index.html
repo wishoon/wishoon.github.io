@@ -209,7 +209,17 @@ data-styled.g66[id="Footer__HiddenWrapper-sc-zqxmks-9"]{content:"eKaItF,iDYkIH,"
 <h3>READ COMMITTED</h3>
 <p><code class="language-text">Read Committed</code>는 <code class="language-text">COMMIT</code>이 완료된 트랜잭션의 변경사항만 다른 트랜잭션에서 조회가 가능합니다. 이로 인해서, <code class="language-text">Read Uncommitted</code>에서 발생하는 <code class="language-text">Dirty Read</code>가 발생하지 않습니다. 이렇게 되는 이유는 <code class="language-text">Read Committed</code> 부터는 <code class="language-text">MVCC</code>인 <code class="language-text">Consistent Read</code>로 문제를 해결하기 때문인데요.</p>
 <p><code class="language-text">Read Committed</code>에서 데이터의 변경이 일어나게 되면 변경 전 데이터는 <strong>언두 영역으로 복사가 됩니다</strong>. 그리고 <strong>다른 트랜잭션에서 해당 테이블의 데이터를 조회할 경우, 변경된 테이블 데이터를 조회하는 것이 아니라 언두 영역에 복사된(Snapshot) 레코드를 조회</strong>하게 됩니다.</p>
-<p><img src="img_1.png"></p>
+<p><span class='gatsby-resp-image-wrapper' style='position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 680px; margin-bottom: 16px;'>
+      <a class='gatsby-resp-image-link' href='/static/3a3c4c2f5ad17fa14421169b45f160cb/e596b/img_1.png' style='display: block' target='_blank' rel='noopener'>
+    <span class='gatsby-resp-image-background-image' style="padding-bottom: 69.41176470588235%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAAACXBIWXMAAAsTAAALEwEAmpwYAAABaklEQVQ4y42T647CQAiF+/7v5y8TL9Haq7Zq762y85GlaWd3zZKQoTAcODAN3u+3INM0qf5XLM9OswNzpGkq1+tVhmGQruukbVvp+16aptHTfJyv12sFRtx8gQXKspSqqhQQJfn5fMrxeNTY4/GQzWYjURTNTAyQuytAJEkSybJMO0DrupZxHFUpAAigdIO9pAqLFSAXSPQFP+AWt+4NjKLErOCKMvPL81wvIVSE8ul00s7Q7XarswYcNoyDEZA7d2jVCOx2O4njWJMBpjsoMlu+7/e70uM8HA4SumLx5aJFflAm2bolSBf4brebdkBHnCyodqBL6R3lFSAfbGq5OVsCy4I6NgxSB5y7rorzWYowlNLZ8X6/nqEPaPqX9G4EFYWcNm7u5eIpfQTkEn77ixgBG/Wl+40yQzenv2WWYFtmBPrEKPp9v/XfIcLQeTb2i7FZbLaKYhdFMT/4j3+KT5Mg6s/TfMsc3/4C2TZFwxFu/IoAAAAASUVORK5CYII='); background-size: cover; display: block;"></span>
+  <img class='gatsby-resp-image-image' alt='img 1' title='img 1' src='/static/3a3c4c2f5ad17fa14421169b45f160cb/ca1dc/img_1.png' srcset='/static/3a3c4c2f5ad17fa14421169b45f160cb/e7570/img_1.png 170w,
+/static/3a3c4c2f5ad17fa14421169b45f160cb/f46e7/img_1.png 340w,
+/static/3a3c4c2f5ad17fa14421169b45f160cb/ca1dc/img_1.png 680w,
+/static/3a3c4c2f5ad17fa14421169b45f160cb/02d09/img_1.png 1020w,
+/static/3a3c4c2f5ad17fa14421169b45f160cb/9d567/img_1.png 1360w,
+/static/3a3c4c2f5ad17fa14421169b45f160cb/e596b/img_1.png 1862w' sizes='(max-width: 680px) 100vw, 680px' style='width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;' loading='lazy' decoding='async'>
+  </a>
+    </span></p>
 <p><code class="language-text">Read Committed</code>는 <code class="language-text">COMMIT</code> 된 데이터에 대해서는 정합성을 유지한다는 판단을 하기 때문에 <code class="language-text">Snapshot</code>을 해당 <code class="language-text">COMMIT</code>된 데이터로 다시 덮어쓰게 됩니다.</p>
 <p><code class="language-text">Read Committed</code>에서는 <code class="language-text">None Repetable Read</code>현상이 발생할 수 있습니다.</p>
 <p><span class='gatsby-resp-image-wrapper' style='position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 680px; margin-bottom: 16px;'>
