@@ -1,10 +1,11 @@
 ---
-title: "Transactional과 Lock 1"
+title: "Transactional과 Lock - 1"
 description:
 date: 2022-10-25
 update: 2022-10-25
 tags:
-- Transactional & Lock
+- Transactional
+- Lock
 
 series: "Transactional과 Lock 알아보기"
 
