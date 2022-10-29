@@ -103,10 +103,10 @@ class CouponService @Autowired constructor(
         couponRepository.save(Coupon("커피 쿠폰"))
         val savedUser = userRepository.save(User("루키", null))
         userHistoryRepository.save(UserHistory(savedUser, "커피 쿠폰"))
-        val request = CouponResponse("루키", "커피 쿠폰")
+        val request = CouponRequest(1L, "커피 쿠폰")
 
         // when
-        couponService.returnCoupon(request) 
+        couponService.findCoupon(request) 
 
         // then
         val results = userHistoryRepository.findAll()
@@ -115,7 +115,7 @@ class CouponService @Autowired constructor(
 }
 ```
 
-위의 코드 중, `couponService.returnCoupon()`은 `userRepository.findById()`을 호출해서 `User` 객체를 가져오게 되는데, 가져온 `User` 객체는 영속성 컨텍스트에서 캐싱된 객체로서 아직 `userHistory` 컬렉션에 객체가 추가되지 않은 상태입니다. 이러한 현상은 `userHistoryRepository.save()` 가 **상위 트랜잭션을 이어받아 하나의 트랜잭션에서 수행되어 커밋이 일어나지 않았기 때문**입니다.
+위의 코드 중, `couponService.findCoupon()`은 `userRepository.findById()`을 호출해서 `User` 객체를 가져오게 되는데, 가져온 `User` 객체는 영속성 컨텍스트에서 캐싱된 객체로서 아직 `userHistory` 컬렉션에 객체가 추가되지 않은 상태입니다. 이러한 현상은 `userHistoryRepository.save()` 가 **상위 트랜잭션을 이어받아 하나의 트랜잭션에서 수행되어 커밋이 일어나지 않았기 때문**입니다.
 
 이를 해결하는 방법은 간단합니다. `@Transactional`을 제거한다면, 새로운 트랜잭션에서 요청이 수행되면서 정상적으로 테스트가 성공하게 됩니다.
 
