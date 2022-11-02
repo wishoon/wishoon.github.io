@@ -5,7 +5,9 @@
 <url> <loc>https://wishoon.github.io/Replication과-SpringBoot/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://wishoon.github.io/테스트에서의 @Transactional/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://wishoon.github.io/DAO와-Repository/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://wishoon.github.io/Transactional과-Lock-1/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://wishoon.github.io/series/Spring-AOP-알아보기</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://wishoon.github.io/series/Transactional과-Lock</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://wishoon.github.io/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://wishoon.github.io/search/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://wishoon.github.io/series/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
