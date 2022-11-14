@@ -3,6 +3,7 @@
 <url> <loc>https://wishoon.github.io/다이나믹-프록시와-팩토리-빈/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://wishoon.github.io/Nginx와-Gzip을-활용한-프론트-최적화/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://wishoon.github.io/Replication과-SpringBoot/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://wishoon.github.io/JPA를-사용함으로서-겪었던-문제들/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://wishoon.github.io/테스트에서의 @Transactional/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://wishoon.github.io/DAO와-Repository/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://wishoon.github.io/Transactional과-Lock-1/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[RSS Feed of rookie]]></title><description><![CDATA[시간이 흘러도 변화에 대응되는 코드를 추구합니다.]]></description><link>https://wishoon.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Wed, 02 Nov 2022 08:10:25 GMT</lastBuildDate><item><title><![CDATA[DAO와 Repository]]></title><description><![CDATA[우테코 미션을 진행하다보면 유행?이 되는 논쟁이 있습니다. 그 중에 하나가 Repository와 DAO…]]></description><link>https://wishoon.github.io/DAO와-Repository/</link><guid isPermaLink="false">https://wishoon.github.io/DAO와-Repository/</guid><pubDate>Tue, 01 Nov 2022 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;우테코 미션을 진행하다보면 유행?이 되는 논쟁이 있습니다. 그 중에 하나가 Repository와 DAO의 차이점 입니다. 당시 미션을 진행할 때는 “그냥 부르는 명칭의 차이가 아닌가?” 라는 생각을 했었습니다. 그리고 지금 이 시점에서 어느 정도 Repository와 DAO의 차이에 대해서 설명할 수 있을 것 같은데요. 이번 글에서는 제가 생각하고 있는 Repository와 DAO의 차이점에 대해서 정리를 해보고자 합니다.&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[RSS Feed of rookie]]></title><description><![CDATA[시간이 흘러도 변화에 대응되는 코드를 추구합니다.]]></description><link>https://wishoon.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Mon, 14 Nov 2022 04:29:16 GMT</lastBuildDate><item><title><![CDATA[DAO와 Repository]]></title><description><![CDATA[우테코 미션을 진행하다보면 유행?이 되는 논쟁이 있습니다. 그 중에 하나가 Repository와 DAO…]]></description><link>https://wishoon.github.io/DAO와-Repository/</link><guid isPermaLink="false">https://wishoon.github.io/DAO와-Repository/</guid><pubDate>Tue, 01 Nov 2022 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;우테코 미션을 진행하다보면 유행?이 되는 논쟁이 있습니다. 그 중에 하나가 Repository와 DAO의 차이점 입니다. 당시 미션을 진행할 때는 “그냥 부르는 명칭의 차이가 아닌가?” 라는 생각을 했었습니다. 그리고 지금 이 시점에서 어느 정도 Repository와 DAO의 차이에 대해서 설명할 수 있을 것 같은데요. 이번 글에서는 제가 생각하고 있는 Repository와 DAO의 차이점에 대해서 정리를 해보고자 합니다.&lt;/p&gt;
 &lt;h2&gt;DAO란 무엇일까??&lt;/h2&gt;
 &lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;DAO&lt;/code&gt;는 Data Acess Object의 약자이며, J2EE에서 최초로 등장한 개념입니다. 인터페이스를 활용한 API를 제공하여 어플리케이션 계층과 퍼시스턴스 계층을 분리하기 위해서 만들어진 패턴이라고 할 수 있습니다. &lt;strong&gt;하나의 데이터베이스 테이블에 대한 저수준의 CRUD 책임을 가지기 때문에, 한 테이블 당 1 : 1로 매핑&lt;/strong&gt;되어서 만들어집니다.&lt;/p&gt;
 &lt;p&gt;그렇다면 이 &lt;code class=&quot;language-text&quot;&gt;DAO&lt;/code&gt;는 왜 만들어지게 되었을까요?? 어플리케이션을 개발하다보면 영구한 저장소가 필요하게 됩니다. 흔히 저희가 데이터베이스라고 명칭하는 것들을 말하는데요. 이러한 데이터베이스는 저희가 아는 종류만 해도 매우 다양하게 존재합니다. 이러한 데이터베이스에 접근하기 위해서 각 데이터베이스에서 제공하는 Public API를 통해서 접근을 하게 됩니다.&lt;/p&gt;
@@ -392,6 +392,296 @@
 &lt;li&gt;&lt;a href=&quot;https://www.baeldung.com/spring-testexecutionlistener&quot;&gt;https://www.baeldung.com/spring-testexecutionlistener&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;https://github.com/next-step/atdd-subway-path&quot;&gt;https://github.com/next-step/atdd-subway-path&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;https://github.com/woowacourse/jwp-refactoring/pull/334/commits/2fa9080066998b4c7e4ba36e3aab7d99433f9861&quot;&gt;https://github.com/woowacourse/jwp-refactoring/pull/334/commits/2fa9080066998b4c7e4ba36e3aab7d99433f9861&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[JPA를 사용함으로서 겪었던 문제들]]></title><description><![CDATA[…]]></description><link>https://wishoon.github.io/JPA를-사용함으로서-겪었던-문제들/</link><guid isPermaLink="false">https://wishoon.github.io/JPA를-사용함으로서-겪었던-문제들/</guid><pubDate>Mon, 24 Oct 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;들어가기 전에..&lt;/h2&gt;
+&lt;p&gt;데이터 접근 기술에 관련된 개발 효율성은 &lt;code class=&quot;language-text&quot;&gt;JPA&lt;/code&gt;를 알기 전과 후로 나뉜다고 할 수 있습니다. 그만큼 &lt;code class=&quot;language-text&quot;&gt;JPA&lt;/code&gt;는 개발자에게 많은 도움을 주는 도구라고 할 수 있습니다. 하지만 그만큼 잘못 사용하면 독으로 다가올 수도 있는 도구인데요.&lt;/p&gt;
+&lt;p&gt;이번 글에서는 &lt;code class=&quot;language-text&quot;&gt;JPA&lt;/code&gt;를 사용함으로써 겪었던 문제들을 소개하기 전, 먼저 그에 대한 개념을 설명하고 각각의 문제사항에 대해서 공유해보는 시간을 가져보겠습니다.&lt;/p&gt;
+&lt;h2&gt;영속성 컨텍스트&lt;/h2&gt;
+&lt;p&gt;영속성 컨텍스트는 &lt;code class=&quot;language-text&quot;&gt;Entity&lt;/code&gt;를 논리적인 개념으로 영구히 저장하는 환경을 말합니다. 이러한 영속성 컨텍스트는 &lt;strong&gt;엔티티 매니저를 통해서 접근&lt;/strong&gt;할 수가 있습니다. 엔티티 메니저는 &lt;strong&gt;하나의 쓰레드마다 하나의 엔티티 메니저가 대응(하나의 트랜잭션 단위라고 봐도 됨)&lt;/strong&gt;되며 내부적으로 &lt;code class=&quot;language-text&quot;&gt;DB Connection Pool&lt;/code&gt;을 사용해서 &lt;code class=&quot;language-text&quot;&gt;DB&lt;/code&gt;에 접근을 수행합니다.&lt;/p&gt;
+&lt;p&gt;이렇게 관리되는 영속성 컨텍스트는 4가지 상태의 생명주기(Transient, Managed, Detached, Removed)로 분류할 수 있습니다.&lt;/p&gt;
+&lt;h3&gt;문제 상황 - 왜 SELECT 쿼리가 발생하는 걸까?&lt;/h3&gt;
+&lt;p&gt;예전에 프로젝트를 하던 도중, &lt;code class=&quot;language-text&quot;&gt;UUID&lt;/code&gt;를 &lt;code class=&quot;language-text&quot;&gt;Entity&lt;/code&gt;의 ID 값으로 설정해야 하는 경우가 있었습니다. 해당 &lt;code class=&quot;language-text&quot;&gt;Entity&lt;/code&gt;를 기반으로 비즈니스 로직을 작성하고 이에 기반한 테스트 코드도 무사히 잘 작동하는 것을 보고 안심하고 다른 작업을 수행하려고 하는데 이상한 점을 발견할 수 있었습니다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;java&quot;&gt;&lt;pre class=&quot;language-java&quot;&gt;&lt;code class=&quot;language-java&quot;&gt;&lt;span class=&quot;token class-name&quot;&gt;Hibernate&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; 
+    select
+        studyLog0_&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;id as id1_0_0_&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+        studyLog0_&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;name as name2_0_0_ 
+    from
+        studyLog studyLog0_ 
+    where
+        studyLog0_&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;id&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;?&lt;/span&gt;
+
+&lt;span class=&quot;token class-name&quot;&gt;Hibernate&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; 
+    insert 
+        into
+            studyLog
+            &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;name&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; id&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; 
+        values
+            &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;?&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;?&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;위와 같이 &lt;code class=&quot;language-text&quot;&gt;INSERT&lt;/code&gt; 작업 전, &lt;code class=&quot;language-text&quot;&gt;SELECT&lt;/code&gt; 쿼리가 한번 발생한 후 &lt;code class=&quot;language-text&quot;&gt;INSERT&lt;/code&gt;가 수행되는 문제를 확인할 수 있었습니다.&lt;/p&gt;
+&lt;h3&gt;Spring Data JPA에서의 save() 처리 방식&lt;/h3&gt;
+&lt;p&gt;Spring Data JPA의 &lt;code class=&quot;language-text&quot;&gt;SimpleJpaRepository&lt;/code&gt;는 &lt;code class=&quot;language-text&quot;&gt;JpaRepository&lt;/code&gt;를 구현하는 구현체로 제공되는 기본적인 &lt;code class=&quot;language-text&quot;&gt;CRUD&lt;/code&gt;가 어떻게 동작하는지 확인을 할 수 있습니다.&lt;/p&gt;
+&lt;p&gt;여기서 코드를 확인해보면, 새로운 객체를 생성할 때는 &lt;code class=&quot;language-text&quot;&gt;persist()&lt;/code&gt;, 객체를 수정할 때는 &lt;code class=&quot;language-text&quot;&gt;merge()&lt;/code&gt;를 호출하여 인스턴스의 영속성 관리를 해주고 있는 것을 확인할 수 있습니다.&lt;/p&gt;
+&lt;p&gt;&lt;span class=&apos;gatsby-resp-image-wrapper&apos; style=&apos;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 680px; margin-bottom: 16px;&apos;&gt;
+      &lt;a class=&apos;gatsby-resp-image-link&apos; href=&apos;/static/6c625e4f26060b0f128c341e9745bb0b/d98b8/img.png&apos; style=&apos;display: block&apos; target=&apos;_blank&apos; rel=&apos;noopener&apos;&gt;
+    &lt;span class=&apos;gatsby-resp-image-background-image&apos; style=&quot;padding-bottom: 33.529411764705884%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAHCAYAAAAIy204AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAxUlEQVQoz5WRQW5DIQxEc5iqagDb2B/4TZssqt7/TFObNlKkfBZdDJaM5mEPp++vF9yur+jbG3LOKCWDStQyFb2U0pPu/aiPOu2aIMIYkqFCUBX0VqFbg9qGPKHPxiPYBBLLNFaXOaSqgSjACvYHuBJI7iqzF1ssgeyXVg3NBrrtLq99oLm21h0gh+YlMI53rbhedlw+bxhjBxP9ZUj/zzDW+/AcI0OzNieL1YUZ6XxeTrKcMKZI8bv592eJeGb4mNPKfKQfTIDVW4T5t5MAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;img class=&apos;gatsby-resp-image-image&apos; alt=&apos;img&apos; title=&apos;img&apos; src=&apos;/static/6c625e4f26060b0f128c341e9745bb0b/ca1dc/img.png&apos; srcset=&apos;/static/6c625e4f26060b0f128c341e9745bb0b/e7570/img.png 170w,
+/static/6c625e4f26060b0f128c341e9745bb0b/f46e7/img.png 340w,
+/static/6c625e4f26060b0f128c341e9745bb0b/ca1dc/img.png 680w,
+/static/6c625e4f26060b0f128c341e9745bb0b/02d09/img.png 1020w,
+/static/6c625e4f26060b0f128c341e9745bb0b/9d567/img.png 1360w,
+/static/6c625e4f26060b0f128c341e9745bb0b/d98b8/img.png 1588w&apos; sizes=&apos;(max-width: 680px) 100vw, 680px&apos; style=&apos;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&apos; loading=&apos;lazy&apos; decoding=&apos;async&apos;&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;코드를 보면 &lt;code class=&quot;language-text&quot;&gt;entityInformation.isNew()&lt;/code&gt; 라는 메서드가 존재합니다. isNew() 메서드는 새로운 Entity를 판단하기 위해서 ID 값을 확인하는데 기본 전략을 다음과 같습니다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ID 타입이 객체 타입일 때 : null&lt;/li&gt;
+&lt;li&gt;ID 타입이 기본 타입일 때 : 0&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;이를 통해서 &lt;code class=&quot;language-text&quot;&gt;Entity&lt;/code&gt;를 식별하는 값인 ID 값의 존재 여부를 파악한 뒤, &lt;code class=&quot;language-text&quot;&gt;persist&lt;/code&gt;와 &lt;code class=&quot;language-text&quot;&gt;merge&lt;/code&gt;를 선택해 수행한다고 할 수 있습니다.&lt;/p&gt;
+&lt;p&gt;여기서 문제가 되는 점은 바로 &lt;code class=&quot;language-text&quot;&gt;entityInformation.isNew()&lt;/code&gt; 부분이였습니다. 일반적인 경우 &lt;code class=&quot;language-text&quot;&gt;@GeneratedValue(strategy = *IDENTITY*)&lt;/code&gt;를 사용하기 때문에 ID 값이 &lt;code class=&quot;language-text&quot;&gt;null&lt;/code&gt; 이여서 &lt;code class=&quot;language-text&quot;&gt;persist&lt;/code&gt; 가 수행이 되었습니다. 하지만 지금과 같이 ID 값이 이미 존재하기 때문에 &lt;code class=&quot;language-text&quot;&gt;merge&lt;/code&gt;가 수행된 것이였습니다.&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;merge&lt;/code&gt;는 영속성 컨텍스트의 1차 캐시에 해당 식별자가 있는지 확인하고 없는 경우 &lt;code class=&quot;language-text&quot;&gt;database&lt;/code&gt;를 조회하는 작업을 수행합니다. 즉, 해당 경우에는 &lt;code class=&quot;language-text&quot;&gt;UUID&lt;/code&gt;이기 때문에 1차 캐시에 동일한 값이 없으므로 &lt;strong&gt;무조건적으로 &lt;code class=&quot;language-text&quot;&gt;SELECT&lt;/code&gt; 쿼리가 한번 발생하게 되는 구조&lt;/strong&gt;라고 할 수 있습니다.&lt;/p&gt;
+&lt;h3&gt;문제 해결 방법&lt;/h3&gt;
+&lt;p&gt;다행이도 &lt;code class=&quot;language-text&quot;&gt;JPA&lt;/code&gt;에서는 &lt;code class=&quot;language-text&quot;&gt;Persistable&lt;/code&gt; 인터페이스를 재정의해서 문제를 해결할 수 있습니다.&lt;/p&gt;
+&lt;p&gt;&lt;span class=&apos;gatsby-resp-image-wrapper&apos; style=&apos;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 680px; margin-bottom: 16px;&apos;&gt;
+      &lt;a class=&apos;gatsby-resp-image-link&apos; href=&apos;/static/ea1edb8c23d55b74c0fe67be0af9d585/d98b8/img_1.png&apos; style=&apos;display: block&apos; target=&apos;_blank&apos; rel=&apos;noopener&apos;&gt;
+    &lt;span class=&apos;gatsby-resp-image-background-image&apos; style=&quot;padding-bottom: 31.176470588235293%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAGCAYAAADDl76dAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAj0lEQVQY052POQ7DMAwE9R3xlGTFShr//1cb+gAcIIWdFEOy4XCZqhKqMZoTSnGU1uC1QlTBzCCmrd8lkTCkGzjQrrBZIR6i/C0iupYnNcKyEF7PSBRy1nN5Ix8csitpoihTpJu6g00gK/5B2VkP3UookcoeFijKcPgcc6BVd/mvQlNBt4zRBKOX89U/X34DC2q1ocDKwTsAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;img class=&apos;gatsby-resp-image-image&apos; alt=&apos;img 1&apos; title=&apos;img 1&apos; src=&apos;/static/ea1edb8c23d55b74c0fe67be0af9d585/ca1dc/img_1.png&apos; srcset=&apos;/static/ea1edb8c23d55b74c0fe67be0af9d585/e7570/img_1.png 170w,
+/static/ea1edb8c23d55b74c0fe67be0af9d585/f46e7/img_1.png 340w,
+/static/ea1edb8c23d55b74c0fe67be0af9d585/ca1dc/img_1.png 680w,
+/static/ea1edb8c23d55b74c0fe67be0af9d585/02d09/img_1.png 1020w,
+/static/ea1edb8c23d55b74c0fe67be0af9d585/9d567/img_1.png 1360w,
+/static/ea1edb8c23d55b74c0fe67be0af9d585/d98b8/img_1.png 1588w&apos; sizes=&apos;(max-width: 680px) 100vw, 680px&apos; style=&apos;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&apos; loading=&apos;lazy&apos; decoding=&apos;async&apos;&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;isNew()&lt;/code&gt; 메서드를 재정의해서 새로운 엔티티 확인 여부를 개발자가 직접 정의할 수 있도록 구현을 할 수 있습니다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;java&quot;&gt;&lt;pre class=&quot;language-java&quot;&gt;&lt;code class=&quot;language-java&quot;&gt;&lt;span class=&quot;token annotation punctuation&quot;&gt;@Getter&lt;/span&gt;
+&lt;span class=&quot;token annotation punctuation&quot;&gt;@NoArgsConstructor&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;access &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;AccessLevel&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token constant&quot;&gt;PROTECTED&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;StudyLog&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;implements&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;Persistable&lt;/span&gt;&lt;span class=&quot;token generics&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token class-name&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token annotation punctuation&quot;&gt;@Id&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;String&lt;/span&gt; uuid&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;token annotation punctuation&quot;&gt;@CreatedDate&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;LocalDateTime&lt;/span&gt; createdDate&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; 
+
+    &lt;span class=&quot;token keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;Item&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token class-name&quot;&gt;String&lt;/span&gt; id&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;id &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; id&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;token annotation punctuation&quot;&gt;@Override&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;boolean&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;isNew&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; createdDate &lt;span class=&quot;token operator&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; 
+    &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;이렇게 구현을 하게 될 경우 원하는 대로 &lt;code class=&quot;language-text&quot;&gt;INSERT&lt;/code&gt; 쿼리가 한번만 나가는 것을 확인할 수 있습니다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;java&quot;&gt;&lt;pre class=&quot;language-java&quot;&gt;&lt;code class=&quot;language-java&quot;&gt;&lt;span class=&quot;token class-name&quot;&gt;Hibernate&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; 
+    insert 
+        into
+            studyLog
+            &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;name&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; id&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; 
+        values
+            &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;?&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;?&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;Flush&lt;/h2&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;entityManager.commit()&lt;/code&gt;을 호출하게 되면 JPA의 영속성 컨텍스트에 있는 객체들이 DB로 반영되게 됩니다. 하지만 실제로는 &lt;code class=&quot;language-text&quot;&gt;commit()&lt;/code&gt; 메서드가 &lt;code class=&quot;language-text&quot;&gt;flush()&lt;/code&gt; 메서드를 호출해 이를 반영하는 것입니다.&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;Flush&lt;/code&gt;는 영속성 컨텍스트의 내용을 &lt;code class=&quot;language-text&quot;&gt;DB&lt;/code&gt;에 반영하는 것을 말하며, 정확하게는 &lt;code class=&quot;language-text&quot;&gt;쓰기 지연 SQL&lt;/code&gt; 저장소에 있는 &lt;code class=&quot;language-text&quot;&gt;SQL&lt;/code&gt; 쿼리가 &lt;code class=&quot;language-text&quot;&gt;DB&lt;/code&gt;로 보내주는 역할을 한다고 할 수 있습니다.&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;Flush&lt;/code&gt;가 호출되는 상황은 크게 다음과 같습니다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;트랜잭션에 commit이 발생할 때&lt;/li&gt;
+&lt;li&gt;EntityManager의 flush 메서드를 호출했을 때&lt;/li&gt;
+&lt;li&gt;JPQL 쿼리가 실행될 때 - (정확하게 말하면 틀린말)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;문제 상황 - 왜 데이터베이스에 반영이 안되지..?&lt;/h3&gt;
+&lt;p&gt;변경감지를 통해서 해당 객체의 데이터 값을 변경해야 하는 비즈니스 로직을 작성해야 했었습니다. 다음과 같이 테스트 코드를 작성하고 비즈니스 로직을 완성하였습니다. (예시를 위해 코드를 간단하게 변경하였습니다)&lt;/p&gt;
+&lt;p&gt;&lt;span class=&apos;gatsby-resp-image-wrapper&apos; style=&apos;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 680px; margin-bottom: 16px;&apos;&gt;
+      &lt;a class=&apos;gatsby-resp-image-link&apos; href=&apos;/static/b1dd4171aa2cf4417836686c86a02678/d98b8/img_2.png&apos; style=&apos;display: block&apos; target=&apos;_blank&apos; rel=&apos;noopener&apos;&gt;
+    &lt;span class=&apos;gatsby-resp-image-background-image&apos; style=&quot;padding-bottom: 30%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAGCAYAAADDl76dAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA2UlEQVQY05WRW5aEIAxE3Q6g5MVDnd7/tqoDanf/zsc1OULqVIpFOOBsAUUJOWeklP5NjPGuCcuaIloRvP52lNqhVsAkMC4TIYWowUqFDvxczJB1Q+YNRG7CBeMUj1iGeib2y20O1dZhVsHGIMkX7n4OphVpXX+cPS7j3bvg+OQtw8igjshA/UJAcD41xEkIdz/XvOq3T5fDIdD3c2LVnWpBs31iUtH6gXYcKL2h7r5BqzjOjt7LFP/m6Q5XX4GY57p2ZzQoHoF6duri4z/rEwF9Ith89nmQhzfvrLl8oPXWVgAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;img class=&apos;gatsby-resp-image-image&apos; alt=&apos;img 2&apos; title=&apos;img 2&apos; src=&apos;/static/b1dd4171aa2cf4417836686c86a02678/ca1dc/img_2.png&apos; srcset=&apos;/static/b1dd4171aa2cf4417836686c86a02678/e7570/img_2.png 170w,
+/static/b1dd4171aa2cf4417836686c86a02678/f46e7/img_2.png 340w,
+/static/b1dd4171aa2cf4417836686c86a02678/ca1dc/img_2.png 680w,
+/static/b1dd4171aa2cf4417836686c86a02678/02d09/img_2.png 1020w,
+/static/b1dd4171aa2cf4417836686c86a02678/9d567/img_2.png 1360w,
+/static/b1dd4171aa2cf4417836686c86a02678/d98b8/img_2.png 1588w&apos; sizes=&apos;(max-width: 680px) 100vw, 680px&apos; style=&apos;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&apos; loading=&apos;lazy&apos; decoding=&apos;async&apos;&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;하지만 테스트가 실패하는 것을 확인할 수 있었습니다.&lt;/p&gt;
+&lt;p&gt;&lt;span class=&apos;gatsby-resp-image-wrapper&apos; style=&apos;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 680px; margin-bottom: 16px;&apos;&gt;
+      &lt;a class=&apos;gatsby-resp-image-link&apos; href=&apos;/static/4cb2c0150fbe0875aa7faadb9206db48/d98b8/img_3.png&apos; style=&apos;display: block&apos; target=&apos;_blank&apos; rel=&apos;noopener&apos;&gt;
+    &lt;span class=&apos;gatsby-resp-image-background-image&apos; style=&quot;padding-bottom: 8.235294117647058%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAACCAYAAABYBvyLAAAACXBIWXMAAAsTAAALEwEAmpwYAAAARUlEQVQI12NwNjD87wLE7oZG/70Mjf97AGlrPf3/utra/7W0tP5rA2lSMAPIEFeggY76Bv/NdfX+G+ro/NcEGgQzjFRDAXRRPV5GPIy4AAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;img class=&apos;gatsby-resp-image-image&apos; alt=&apos;img 3&apos; title=&apos;img 3&apos; src=&apos;/static/4cb2c0150fbe0875aa7faadb9206db48/ca1dc/img_3.png&apos; srcset=&apos;/static/4cb2c0150fbe0875aa7faadb9206db48/e7570/img_3.png 170w,
+/static/4cb2c0150fbe0875aa7faadb9206db48/f46e7/img_3.png 340w,
+/static/4cb2c0150fbe0875aa7faadb9206db48/ca1dc/img_3.png 680w,
+/static/4cb2c0150fbe0875aa7faadb9206db48/02d09/img_3.png 1020w,
+/static/4cb2c0150fbe0875aa7faadb9206db48/9d567/img_3.png 1360w,
+/static/4cb2c0150fbe0875aa7faadb9206db48/d98b8/img_3.png 1588w&apos; sizes=&apos;(max-width: 680px) 100vw, 680px&apos; style=&apos;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&apos; loading=&apos;lazy&apos; decoding=&apos;async&apos;&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;그런데 또 웃긴상황인건 실제 프로덕션 코드에서는 정상적으로 로직이 동작하는 것을 확인할 수 있었습니다. 그렇다는 것은 실제 프로덕션 코드는 문제가 없고 테스트 코드를 잘못 작성했다는 얘기였습니다. 하지만 아무리봐도 코드 자체는 문제가 없어보였습니다.&lt;/p&gt;
+&lt;h3&gt;Flush의 동작 방식을 다시 학습하자 ㅠㅠ&lt;/h3&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;Flush&lt;/code&gt; 호출 상황에 대한 검색을 해보면 위에서 언급된 다음 3가지 상황이 나오게 됩니다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;트랜잭션에 commit이 발생할 때&lt;/li&gt;
+&lt;li&gt;EntityManager의 flush 메서드를 호출했을 때&lt;/li&gt;
+&lt;li&gt;JPQL 쿼리가 실행될 때&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;그렇다면 테스트 코드에서는 이러한 조건을 하나라도 만족하는 것이 있을까요?? 눈치 채셨겠지만 해당 조건을 만족하는 코드가 존재하지 않습니다. 실제 프로덕션 처럼 &lt;code class=&quot;language-text&quot;&gt;commit&lt;/code&gt;을 하는 과정이 없기 때문입니다.&lt;/p&gt;
+&lt;h3&gt;해결 방법&lt;/h3&gt;
+&lt;p&gt;해결방법은 간단했습니다. 아까 말한 것 처럼, 실제 프로덕션에서는 &lt;code class=&quot;language-text&quot;&gt;Transaction&lt;/code&gt;이 끝나는 시점에 &lt;code class=&quot;language-text&quot;&gt;commit&lt;/code&gt;이 이루어지기 때문에 &lt;code class=&quot;language-text&quot;&gt;Flush&lt;/code&gt;가 호출되었습니다. 테스트 코드는 이러한 과정이 없기 때문에 직접 &lt;code class=&quot;language-text&quot;&gt;Flush&lt;/code&gt;를 날려주는 코드를 작성해주면 됩니다.&lt;/p&gt;
+&lt;p&gt;&lt;span class=&apos;gatsby-resp-image-wrapper&apos; style=&apos;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 680px; margin-bottom: 16px;&apos;&gt;
+      &lt;a class=&apos;gatsby-resp-image-link&apos; href=&apos;/static/085f26460e43ddb3795634a1c9e1e310/d98b8/img_4.png&apos; style=&apos;display: block&apos; target=&apos;_blank&apos; rel=&apos;noopener&apos;&gt;
+    &lt;span class=&apos;gatsby-resp-image-background-image&apos; style=&quot;padding-bottom: 28.82352941176471%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAGCAYAAADDl76dAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA5UlEQVQY011QSRLDIAzrd8JiMIuBNO3/f6U6kHYmPWhkMBKyH++x4eiMUjK8Jzjn4KyDd37irJ33qzfZzzfW2QVrYYyZbK3BIxChj4YqglwFkRNSyKis51jAMel9RdFeymUiZgaxB0UCqf5mSBTQZMdoB3p/Yjxf4JzgWVNGdwnPpEaF2wVzwzelMVYNdZTKDSPtKFlQWwd5h227C62xfyaX0Znsl9CuhNLHRJEGZh03NbQylGV+0vYdMrr2ZXETHK+h6wi3cX+G535yqRPnjr416z5LEXDKCDkgMCGmxSHQMvoz/AAasbppqOYrrAAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;img class=&apos;gatsby-resp-image-image&apos; alt=&apos;img 4&apos; title=&apos;img 4&apos; src=&apos;/static/085f26460e43ddb3795634a1c9e1e310/ca1dc/img_4.png&apos; srcset=&apos;/static/085f26460e43ddb3795634a1c9e1e310/e7570/img_4.png 170w,
+/static/085f26460e43ddb3795634a1c9e1e310/f46e7/img_4.png 340w,
+/static/085f26460e43ddb3795634a1c9e1e310/ca1dc/img_4.png 680w,
+/static/085f26460e43ddb3795634a1c9e1e310/02d09/img_4.png 1020w,
+/static/085f26460e43ddb3795634a1c9e1e310/9d567/img_4.png 1360w,
+/static/085f26460e43ddb3795634a1c9e1e310/d98b8/img_4.png 1588w&apos; sizes=&apos;(max-width: 680px) 100vw, 680px&apos; style=&apos;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&apos; loading=&apos;lazy&apos; decoding=&apos;async&apos;&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;h3&gt;문제 상황 - 왜 데이터베이스에 반영이 안되지 22..?&lt;/h3&gt;
+&lt;p&gt;프로젝트 중, 한 메서드에서 도메인의 카운트를 감소하고 다른 도메인에서 논리적 삭제를 해주는 코드를 작성해야 했었습니다. 역시 다음과 같이 테스트 코드를 작성하기 비즈니스 로직을 완성하였습니다. (예시를 위해 코드를 간단하게 변경하였습니다)&lt;/p&gt;
+&lt;p&gt;&lt;span class=&apos;gatsby-resp-image-wrapper&apos; style=&apos;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 680px; margin-bottom: 16px;&apos;&gt;
+      &lt;a class=&apos;gatsby-resp-image-link&apos; href=&apos;/static/7eeb7fad8b486d919cae200eefce6da7/d98b8/img_5.png&apos; style=&apos;display: block&apos; target=&apos;_blank&apos; rel=&apos;noopener&apos;&gt;
+    &lt;span class=&apos;gatsby-resp-image-background-image&apos; style=&quot;padding-bottom: 60.58823529411765%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAYAAABiDJ37AAAACXBIWXMAAAsTAAALEwEAmpwYAAACB0lEQVQoz2VS2XLbMAzUr7Qzaa2DEg8dpChRcmLHTtK6nmTS//+T7ZJ2kknzsAKIERZYAJmROSYr4AeJvm8h6gZVWUFUglZc/LpGTVRCQBCVqFCWJYqi+IQYy/I8x9BbLPOKMG3h3MT3iGlcYGn7zsL5GX5eMDhPOGitoJSEkCzQXApWVZVIs7zI0ZqehDt4FxKmsMW83mKwFrptYboe3WDR0kY0VKFI2hh2rgQa2VDRlbC4Eq7THbwlGTv1c4BpO0gpWVl8SL36sZuEKL0qL7iOIIsfWSt0akCvbepGKYVik7/PJSaXVZQWib7O7ssMoxw3zZzVBDt6zs1xhitc76GVQdsPlNjCuh5Gy/fk//HeoZEtgtvC9wHOThhJPrgRHYmi9Lj5fLNBLP6GmHex+acCqcOmlqzcwaguketGQ5Rx2JLQMEZxGYY+t6s1pNKom4YzVslPC7kWyWJQmyiLm4xbJLFWLX/WUIxrwyLcdNt1fLepYx0XRiLNd4wJNlTG06GS7PT8ivPLXxyffmP/8IiH0x8c6IfbHSaejuUNDle4KXyAd3mxAfu7gDue2hpWZOeXV/w6P2O7PyTsjo/YH58Sov8Wj/AsMDJpZHKyy5bxe56bwcJlbsOCrLs9wOxOKOYDNv4eP/0eN26X8IOI74Rxj+/9im/dQlxsfIvliEJI3u+MsCz4B0qAglCtRAMZAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;img class=&apos;gatsby-resp-image-image&apos; alt=&apos;img 5&apos; title=&apos;img 5&apos; src=&apos;/static/7eeb7fad8b486d919cae200eefce6da7/ca1dc/img_5.png&apos; srcset=&apos;/static/7eeb7fad8b486d919cae200eefce6da7/e7570/img_5.png 170w,
+/static/7eeb7fad8b486d919cae200eefce6da7/f46e7/img_5.png 340w,
+/static/7eeb7fad8b486d919cae200eefce6da7/ca1dc/img_5.png 680w,
+/static/7eeb7fad8b486d919cae200eefce6da7/02d09/img_5.png 1020w,
+/static/7eeb7fad8b486d919cae200eefce6da7/9d567/img_5.png 1360w,
+/static/7eeb7fad8b486d919cae200eefce6da7/d98b8/img_5.png 1588w&apos; sizes=&apos;(max-width: 680px) 100vw, 680px&apos; style=&apos;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&apos; loading=&apos;lazy&apos; decoding=&apos;async&apos;&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;JPQL&lt;/code&gt; 쿼리가 실행되기 때문에, 당연히 &lt;code class=&quot;language-text&quot;&gt;Flush&lt;/code&gt;가 발생할 것이라 생각했지만, 로그를 확인해보니 예상과 다르게 &lt;code class=&quot;language-text&quot;&gt;Flush&lt;/code&gt;가 동작하지 않는 것을 확인할 수 있었습니다.&lt;/p&gt;
+&lt;h3&gt;JPQL은 해당 쿼리와 관련이 있는 엔티티만 플러시를 한다&lt;/h3&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;Flush&lt;/code&gt; 호출 상황에 대한 블로그 검색을 해보면 대부분 &lt;code class=&quot;language-text&quot;&gt;JPQL&lt;/code&gt; 쿼리가 실행될 때 &lt;code class=&quot;language-text&quot;&gt;Flush&lt;/code&gt;가 호출되어 있다고 작성되어 있습니다. 하지만 &lt;code class=&quot;language-text&quot;&gt;Hibernate Docs&lt;/code&gt;를 살펴보면 다음과 같이 작성되어 있습니다.&lt;/p&gt;
+&lt;p&gt;&lt;span class=&apos;gatsby-resp-image-wrapper&apos; style=&apos;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 680px; margin-bottom: 16px;&apos;&gt;
+      &lt;a class=&apos;gatsby-resp-image-link&apos; href=&apos;/static/b0c4559bca6319ad1d6b1e3873551a89/d98b8/img_6.png&apos; style=&apos;display: block&apos; target=&apos;_blank&apos; rel=&apos;noopener&apos;&gt;
+    &lt;span class=&apos;gatsby-resp-image-background-image&apos; style=&quot;padding-bottom: 17.058823529411764%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAADCAYAAACTWi8uAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAkElEQVQI10VPiw6DIBDz//9wG6LZnCgPJ5rIdISOOzJHaGgvvaZUYfFwg4K3BqZ/Mn9pjbHrMh8QwwYcO9L+PvHT5zx+QCelhGrrH7CNwHxvYeQNrqmhxRWjuMC1NWt6rRSYWpm9hdOOy9rlnbjM/8CwrrCqz61GbkeYcjNCaVvms9HsY48qPvpR8J6S6HLgF90y4t/GXvimAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;img class=&apos;gatsby-resp-image-image&apos; alt=&apos;img 6&apos; title=&apos;img 6&apos; src=&apos;/static/b0c4559bca6319ad1d6b1e3873551a89/ca1dc/img_6.png&apos; srcset=&apos;/static/b0c4559bca6319ad1d6b1e3873551a89/e7570/img_6.png 170w,
+/static/b0c4559bca6319ad1d6b1e3873551a89/f46e7/img_6.png 340w,
+/static/b0c4559bca6319ad1d6b1e3873551a89/ca1dc/img_6.png 680w,
+/static/b0c4559bca6319ad1d6b1e3873551a89/02d09/img_6.png 1020w,
+/static/b0c4559bca6319ad1d6b1e3873551a89/9d567/img_6.png 1360w,
+/static/b0c4559bca6319ad1d6b1e3873551a89/d98b8/img_6.png 1588w&apos; sizes=&apos;(max-width: 680px) 100vw, 680px&apos; style=&apos;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&apos; loading=&apos;lazy&apos; decoding=&apos;async&apos;&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;현재 위의 코드에서는 영속성 컨텍스트에서 &lt;code class=&quot;language-text&quot;&gt;Member - StudyLog&lt;/code&gt;간의 &lt;code class=&quot;language-text&quot;&gt;Entity Actions&lt;/code&gt;가 존재하지 않습니다. 즉, 위에서 말한 &lt;code class=&quot;language-text&quot;&gt;Flush&lt;/code&gt;가 호출되는 상황에서  &lt;code class=&quot;language-text&quot;&gt;JPQL&lt;/code&gt; &lt;strong&gt;쿼리가 실행될 때 Flush가 호출된다&lt;/strong&gt; 라는 말은 엄밀히 말하면 잘못된 말이라고 할 수 있습니다.&lt;/p&gt;
+&lt;h3&gt;해결 방법&lt;/h3&gt;
+&lt;p&gt;해결 방법은 간단합니다. 다음과 같이 영속성 컨텍스트에 &lt;code class=&quot;language-text&quot;&gt;Flush&lt;/code&gt; 처리를 해주면 됩니다.&lt;/p&gt;
+&lt;p&gt;&lt;span class=&apos;gatsby-resp-image-wrapper&apos; style=&apos;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 680px; margin-bottom: 16px;&apos;&gt;
+      &lt;a class=&apos;gatsby-resp-image-link&apos; href=&apos;/static/9cc9f9a25d2aef43dd3bbc6c944108db/d98b8/img_7.png&apos; style=&apos;display: block&apos; target=&apos;_blank&apos; rel=&apos;noopener&apos;&gt;
+    &lt;span class=&apos;gatsby-resp-image-background-image&apos; style=&quot;padding-bottom: 62.35294117647059%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAYAAABiDJ37AAAACXBIWXMAAAsTAAALEwEAmpwYAAAB7UlEQVQoz3WTaZKbMBSEOc3EYEloQexis7ENnkkySe5/lc6T8BJPVX58pb3VrwWRkTu4ShAaZWEhUgm2ZxBMBDiR0pxHiJQQYJxhv98jSZIX/FwU72IUeY3BTejdAU3do64cOhrXZUtrFeq2Q9uPKOuWaKCNgtIKQnEISaT+YhZEoziJkZkcQzejqfog6OiwGw8oypIOZzCZhc3L0HpScikVuTYiiKYyfQomJGiURVeTo9wFN1XT0CYJzvlWGrGVuLUP2Ov4JphASY2MRK0pyEFOYwVGh32WIU/KjpOr4IQu+Zrda4ZxDFuUaLthc1c7lGVzy9DB6AyZzalEQxFYaJUivh3+yrNkmaErRjTWoSKRumlhSMTn5TPkXCCOd/CXe/7n7lGyFAqFqZCbEtZS2dpgT/OMcfpE6BUFBe9fkvpefGu3NT9mjD1cBkGfj9QakrJUXEESKZf0aRjCl2yQ51ko++7aP5o2JuzxL3x3Hs2XFefrB47nBdPpjAO1/WFGQWXnVQNb1k+qf2kefb/3TvT5+w++//zE0YvNM5b1ivX9A+dlwelywTBND/pxfDKMGMYJHfWH+Uh7V0zHE6J6+YHu+gtmWqEJNa5I+wvk4Fmgx/v8grga8Vb0+FYMeMt7sHaG6Y7hB+i7Ds45/AWd2YIqx8+gIAAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;img class=&apos;gatsby-resp-image-image&apos; alt=&apos;img 7&apos; title=&apos;img 7&apos; src=&apos;/static/9cc9f9a25d2aef43dd3bbc6c944108db/ca1dc/img_7.png&apos; srcset=&apos;/static/9cc9f9a25d2aef43dd3bbc6c944108db/e7570/img_7.png 170w,
+/static/9cc9f9a25d2aef43dd3bbc6c944108db/f46e7/img_7.png 340w,
+/static/9cc9f9a25d2aef43dd3bbc6c944108db/ca1dc/img_7.png 680w,
+/static/9cc9f9a25d2aef43dd3bbc6c944108db/02d09/img_7.png 1020w,
+/static/9cc9f9a25d2aef43dd3bbc6c944108db/9d567/img_7.png 1360w,
+/static/9cc9f9a25d2aef43dd3bbc6c944108db/d98b8/img_7.png 1588w&apos; sizes=&apos;(max-width: 680px) 100vw, 680px&apos; style=&apos;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&apos; loading=&apos;lazy&apos; decoding=&apos;async&apos;&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;하지만 과연 프로덕션 코드에서 이렇게 &lt;code class=&quot;language-text&quot;&gt;Flush&lt;/code&gt;를 직접 호출하는 것이 올바른 방법인지에 대해서는 아직 의문점을 가지고 있는 상태입니다. 더 좋은 방법이 있다면 그 방법을 통해서 문제를 해결할 것 같습니다.&lt;/p&gt;
+&lt;p&gt;해당 문제를 해결하면서 들었던 생각은, 가끔 간접참조를 통해서 각 &lt;code class=&quot;language-text&quot;&gt;Entity&lt;/code&gt;들을 설계하는 경우가 많은데 해당 경우에 &lt;strong&gt;영속성 컨텍스트의 상태가 어떻게 관리가 될 것&lt;/strong&gt;인지 항상 고려하고 사용해야 할 것 같습니다.&lt;/p&gt;
+&lt;h2&gt;N + 1&lt;/h2&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;N + 1&lt;/code&gt; 은 &lt;strong&gt;조회 시 1개의 쿼리를 생각하고 설계를 하였으나 생각하지 못한 조회의 쿼리가 N개가 추가적으로 발생하는 문제&lt;/strong&gt;를 말합니다. JPA의 경우 객체에 대해서 조회를 하게 되면서, 다양한 연관관계들의 매핑에 의해 관계가 맺어진 다른 객체가 함께 조회되는 경우 &lt;code class=&quot;language-text&quot;&gt;N + 1&lt;/code&gt; 이 발생하게 됩니다.&lt;/p&gt;
+&lt;h3&gt;문제상황 - 즉시 로딩에서의 N + 1 문제점&lt;/h3&gt;
+&lt;p&gt;1 : N 관계를 가지고 있는 엔티티 관계가 있다고 가정하겠습니다. 1에 해당하는 엔티티에 대해서 전체 조회를 위해 Spring Data JPA의 &lt;code class=&quot;language-text&quot;&gt;findAll()&lt;/code&gt; 메서드를 이용해서 조회를 하게 되면 N + 1 문제가 발생하게 됩니다.&lt;/p&gt;
+&lt;h3&gt;작성된 JPQL은 결과를 반환할 때 연관관계까지 고려하지 않는다&lt;/h3&gt;
+&lt;p&gt;위처럼 &lt;code class=&quot;language-text&quot;&gt;findAll()&lt;/code&gt; 쿼리 메서드를 호출할 경우 &lt;code class=&quot;language-text&quot;&gt;select x from Table x&lt;/code&gt; 라는 &lt;code class=&quot;language-text&quot;&gt;JPQL&lt;/code&gt;로 번역이 되게 됩니다. &lt;code class=&quot;language-text&quot;&gt;JPQL&lt;/code&gt;은 결과를 반환할 때 해당 엔티티의 연관관계를 고려하지 않습니다. 즉, SELECT 절에 지정된 엔티티만 조회를 하게 됩니다.&lt;/p&gt;
+&lt;p&gt;이렇게 엔티티 조회를 한 후, JPA는 조회한 엔티티의 내부 연관관계를 확인합니다. 현재 연관관계가 즉시로딩으로 설정되어 있기 때문에 연관된 엔티티를 검색하면서 N번의 쿼리가 발생하게 됩니다.&lt;/p&gt;
+&lt;p&gt;&lt;span class=&apos;gatsby-resp-image-wrapper&apos; style=&apos;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 680px; margin-bottom: 16px;&apos;&gt;
+      &lt;a class=&apos;gatsby-resp-image-link&apos; href=&apos;/static/a66ba9e4dd66150dcba185d741faf118/919e0/img_8.png&apos; style=&apos;display: block&apos; target=&apos;_blank&apos; rel=&apos;noopener&apos;&gt;
+    &lt;span class=&apos;gatsby-resp-image-background-image&apos; style=&quot;padding-bottom: 55.294117647058826%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAAAsTAAALEwEAmpwYAAABRElEQVQoz4WS646CUAyEeR6VyxFQOQiC4F14/7fp5qspYdmY/TFpD2mHmbZBHMdyPB6lrmu5Xq/yer3Eey+bzUaiKFKEYShJkohzTuNXuEQCiiBdr9dyPp+VEOL3+y3P53PK8zz/nxRCkt1up6qappGqqjQnohxUdSXb7VbJvuNDGqCuKApVczgcZLVaTTaxbZFv1Fqkefl2ZjlJYm26XC5qmXm2bas/eTwecr/fZRzH6c0YqOn7Xsdxu90kTdOPwvlc9vu9qqSYIiJgtvyg7zuN1GRZpqPCHX3GEdhAbTnkXdcpoS+9nE4nJTFFzNn7QmvnmCzPCe1MaByGQRfCGMghBVjkjWoUWu+0FFZt6sqy1EJs5Hmmp0ITIDebBpvbdEpuNkMjRBHNZsMw3+xvm25xh+6vZbaKLW6RCFgEJMv7MyLDD79DaNNJE1UAAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;img class=&apos;gatsby-resp-image-image&apos; alt=&apos;img 8&apos; title=&apos;img 8&apos; src=&apos;/static/a66ba9e4dd66150dcba185d741faf118/ca1dc/img_8.png&apos; srcset=&apos;/static/a66ba9e4dd66150dcba185d741faf118/e7570/img_8.png 170w,
+/static/a66ba9e4dd66150dcba185d741faf118/f46e7/img_8.png 340w,
+/static/a66ba9e4dd66150dcba185d741faf118/ca1dc/img_8.png 680w,
+/static/a66ba9e4dd66150dcba185d741faf118/02d09/img_8.png 1020w,
+/static/a66ba9e4dd66150dcba185d741faf118/919e0/img_8.png 1308w&apos; sizes=&apos;(max-width: 680px) 100vw, 680px&apos; style=&apos;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&apos; loading=&apos;lazy&apos; decoding=&apos;async&apos;&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&apos;gatsby-resp-image-wrapper&apos; style=&apos;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 680px; margin-bottom: 16px;&apos;&gt;
+      &lt;a class=&apos;gatsby-resp-image-link&apos; href=&apos;/static/3807eec63f476b6de655dd3edf4a948b/cda85/img_9.png&apos; style=&apos;display: block&apos; target=&apos;_blank&apos; rel=&apos;noopener&apos;&gt;
+    &lt;span class=&apos;gatsby-resp-image-background-image&apos; style=&quot;padding-bottom: 152.35294117647058%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAeCAYAAAAsEj5rAAAACXBIWXMAAAsTAAALEwEAmpwYAAACz0lEQVRIx5WV6ZKqQAyFfR83FHHFBQQVtGqmLN//Vfr6pedw2ca690eTXtInyUk6DJ7Pp7vf7+56vbqiKFwURS4IAjebzf57cG/AZ7lcusvl4vI8d+v12o3HYzedTm1wrnl7BMG0oQeoAS4WC3c4HFySJCZXq5XbbDZmiDOM4DlrBucM9jiTHsADuToajewQL2+3m4Wfpqk7nU5GB8a0RifLMnc+n11ZlnbOfD6few8BBX273ZoiF1A6Ho8ujmNT3u/3JgFFYrwebiPkNiB84iWAUMAegPIKUAB9MoJuUgQIb1l2NkA8JLw43hmI99R7R/hwyF3CFFgHEA8FBocA4mV5L620FDbj8XjYHpFAEXodDgmDcMSj9zC2S0gAoQCjSZpUBslyuAj7k4KyvER5t9sZOEAYE5eEzTmghF9xKEIpGzhUQigHANK3J6yRfp36sskz20OPO4AbIJ7hMpfwAuB6KTRfRt+TDLplQ+yESzjwyFwvgTme6+UAXM+qyib4Aa5eynA4tEtwp2ZBGJbxsrA9whVgBTrzoBWgsvv9/WXcTCYTAyd05jQK5pIKTR62RxUyIZJRvQ4kHmOMNZK9envrBVSl441/KX+fHqWhZoCkoOHxN8AZgK/Xy6qelwEIBggPA8qu5kh6oMB6GywTwoV8PNtuN41MNhLQMzoNlgW8EBIhwiNrGmYULczjMAzf69D2tJZEV/o9ZbOuXgk0qFWpZNS+0CEiuEWPNWeNt4wkKVxQYuoNVtKMvNsYun2v6J86thpsBfjTYLuJCT4Dqn19AmwnpqdjNwEBYq6eiNcM8SguKf6PPyn9UwAsilsFRCXAr/6A+u1S8L1JqXfs4/FgZQSAPcuTN8AZejJA2fiib5UNvOifrFLBC99gvSHk5ZIbKGDoYRBP7UcPGBbqXZeCrQ9CqRe1BnuSjKps2MQCHGKFdb0Ls0YC+NsT1PgD117nBnUCKLsAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;img class=&apos;gatsby-resp-image-image&apos; alt=&apos;img 9&apos; title=&apos;img 9&apos; src=&apos;/static/3807eec63f476b6de655dd3edf4a948b/ca1dc/img_9.png&apos; srcset=&apos;/static/3807eec63f476b6de655dd3edf4a948b/e7570/img_9.png 170w,
+/static/3807eec63f476b6de655dd3edf4a948b/f46e7/img_9.png 340w,
+/static/3807eec63f476b6de655dd3edf4a948b/ca1dc/img_9.png 680w,
+/static/3807eec63f476b6de655dd3edf4a948b/cda85/img_9.png 928w&apos; sizes=&apos;(max-width: 680px) 100vw, 680px&apos; style=&apos;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&apos; loading=&apos;lazy&apos; decoding=&apos;async&apos;&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;h3&gt;문제상황 - 지연 로딩에서의 N + 1 문제점&lt;/h3&gt;
+&lt;p&gt;역시 동일하게 1 : N 관계를 가지고 있는 엔티티 관계가 있다고 가정하겠습니다. 지연 로딩으로 설정하였기 때문에 연관된 객체를 사용하는 시점에 조회를 하게 됩니다. 이 때문에 N + 1이 발생하지 않는다고 생각할 수 있지만, 상황에 따라서 N + 1 문제가 발생하게 됩니다.&lt;/p&gt;
+&lt;h3&gt;지연 로딩은 연관된 객체를 프록시로 가진다.&lt;/h3&gt;
+&lt;p&gt;지연 로딩을 사용한 상태에서 &lt;code class=&quot;language-text&quot;&gt;findAll()&lt;/code&gt; 쿼리 메서드를 호출할 경우 역시 동일하게 &lt;code class=&quot;language-text&quot;&gt;select x from Table x&lt;/code&gt; 라는 &lt;code class=&quot;language-text&quot;&gt;JPQL&lt;/code&gt;로 번역이 되게 됩니다. 이 때 SELECT 절에 지정된 엔티티만 조회하여 정보를 가져오게 되고, 연관관계가 맺어진 엔티티는 프록시로 가져오게 됩니다. 이 때문에 처음에는 N + 1 이 발생하지 않지만, 추후에 연관관계가 맺어진 엔티티를 조회한다면 프록시가 아닌 실제 엔티티를 가져오기 위해 조회쿼리가 발생해 N + 1 이 발생하게 됩니다.&lt;/p&gt;
+&lt;p&gt;&lt;span class=&apos;gatsby-resp-image-wrapper&apos; style=&apos;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 680px; margin-bottom: 16px;&apos;&gt;
+      &lt;a class=&apos;gatsby-resp-image-link&apos; href=&apos;/static/a66ba9e4dd66150dcba185d741faf118/919e0/img_10.png&apos; style=&apos;display: block&apos; target=&apos;_blank&apos; rel=&apos;noopener&apos;&gt;
+    &lt;span class=&apos;gatsby-resp-image-background-image&apos; style=&quot;padding-bottom: 55.294117647058826%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAAAsTAAALEwEAmpwYAAABRElEQVQoz4WS646CUAyEeR6VyxFQOQiC4F14/7fp5qspYdmY/TFpD2mHmbZBHMdyPB6lrmu5Xq/yer3Eey+bzUaiKFKEYShJkohzTuNXuEQCiiBdr9dyPp+VEOL3+y3P53PK8zz/nxRCkt1up6qappGqqjQnohxUdSXb7VbJvuNDGqCuKApVczgcZLVaTTaxbZFv1Fqkefl2ZjlJYm26XC5qmXm2bas/eTwecr/fZRzH6c0YqOn7Xsdxu90kTdOPwvlc9vu9qqSYIiJgtvyg7zuN1GRZpqPCHX3GEdhAbTnkXdcpoS+9nE4nJTFFzNn7QmvnmCzPCe1MaByGQRfCGMghBVjkjWoUWu+0FFZt6sqy1EJs5Hmmp0ITIDebBpvbdEpuNkMjRBHNZsMw3+xvm25xh+6vZbaKLW6RCFgEJMv7MyLDD79DaNNJE1UAAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;img class=&apos;gatsby-resp-image-image&apos; alt=&apos;img 10&apos; title=&apos;img 10&apos; src=&apos;/static/a66ba9e4dd66150dcba185d741faf118/ca1dc/img_10.png&apos; srcset=&apos;/static/a66ba9e4dd66150dcba185d741faf118/e7570/img_10.png 170w,
+/static/a66ba9e4dd66150dcba185d741faf118/f46e7/img_10.png 340w,
+/static/a66ba9e4dd66150dcba185d741faf118/ca1dc/img_10.png 680w,
+/static/a66ba9e4dd66150dcba185d741faf118/02d09/img_10.png 1020w,
+/static/a66ba9e4dd66150dcba185d741faf118/919e0/img_10.png 1308w&apos; sizes=&apos;(max-width: 680px) 100vw, 680px&apos; style=&apos;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&apos; loading=&apos;lazy&apos; decoding=&apos;async&apos;&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&apos;gatsby-resp-image-wrapper&apos; style=&apos;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 680px; margin-bottom: 16px;&apos;&gt;
+      &lt;a class=&apos;gatsby-resp-image-link&apos; href=&apos;/static/3807eec63f476b6de655dd3edf4a948b/cda85/img_11.png&apos; style=&apos;display: block&apos; target=&apos;_blank&apos; rel=&apos;noopener&apos;&gt;
+    &lt;span class=&apos;gatsby-resp-image-background-image&apos; style=&quot;padding-bottom: 152.35294117647058%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAeCAYAAAAsEj5rAAAACXBIWXMAAAsTAAALEwEAmpwYAAACz0lEQVRIx5WV6ZKqQAyFfR83FHHFBQQVtGqmLN//Vfr6pedw2ca690eTXtInyUk6DJ7Pp7vf7+56vbqiKFwURS4IAjebzf57cG/AZ7lcusvl4vI8d+v12o3HYzedTm1wrnl7BMG0oQeoAS4WC3c4HFySJCZXq5XbbDZmiDOM4DlrBucM9jiTHsADuToajewQL2+3m4Wfpqk7nU5GB8a0RifLMnc+n11ZlnbOfD6few8BBX273ZoiF1A6Ho8ujmNT3u/3JgFFYrwebiPkNiB84iWAUMAegPIKUAB9MoJuUgQIb1l2NkA8JLw43hmI99R7R/hwyF3CFFgHEA8FBocA4mV5L620FDbj8XjYHpFAEXodDgmDcMSj9zC2S0gAoQCjSZpUBslyuAj7k4KyvER5t9sZOEAYE5eEzTmghF9xKEIpGzhUQigHANK3J6yRfp36sskz20OPO4AbIJ7hMpfwAuB6KTRfRt+TDLplQ+yESzjwyFwvgTme6+UAXM+qyib4Aa5eynA4tEtwp2ZBGJbxsrA9whVgBTrzoBWgsvv9/WXcTCYTAyd05jQK5pIKTR62RxUyIZJRvQ4kHmOMNZK9envrBVSl441/KX+fHqWhZoCkoOHxN8AZgK/Xy6qelwEIBggPA8qu5kh6oMB6GywTwoV8PNtuN41MNhLQMzoNlgW8EBIhwiNrGmYULczjMAzf69D2tJZEV/o9ZbOuXgk0qFWpZNS+0CEiuEWPNWeNt4wkKVxQYuoNVtKMvNsYun2v6J86thpsBfjTYLuJCT4Dqn19AmwnpqdjNwEBYq6eiNcM8SguKf6PPyn9UwAsilsFRCXAr/6A+u1S8L1JqXfs4/FgZQSAPcuTN8AZejJA2fiib5UNvOifrFLBC99gvSHk5ZIbKGDoYRBP7UcPGBbqXZeCrQ9CqRe1BnuSjKps2MQCHGKFdb0Ls0YC+NsT1PgD117nBnUCKLsAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;img class=&apos;gatsby-resp-image-image&apos; alt=&apos;img 11&apos; title=&apos;img 11&apos; src=&apos;/static/3807eec63f476b6de655dd3edf4a948b/ca1dc/img_11.png&apos; srcset=&apos;/static/3807eec63f476b6de655dd3edf4a948b/e7570/img_11.png 170w,
+/static/3807eec63f476b6de655dd3edf4a948b/f46e7/img_11.png 340w,
+/static/3807eec63f476b6de655dd3edf4a948b/ca1dc/img_11.png 680w,
+/static/3807eec63f476b6de655dd3edf4a948b/cda85/img_11.png 928w&apos; sizes=&apos;(max-width: 680px) 100vw, 680px&apos; style=&apos;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&apos; loading=&apos;lazy&apos; decoding=&apos;async&apos;&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;h3&gt;해결 방법&lt;/h3&gt;
+&lt;p&gt;N + 1 문제를 해결하기 위해서는 &lt;code class=&quot;language-text&quot;&gt;FetchJoin&lt;/code&gt;, &lt;code class=&quot;language-text&quot;&gt;BatchSize&lt;/code&gt;, &lt;code class=&quot;language-text&quot;&gt;EntityGraph&lt;/code&gt;총 3가지 방법을 통해서 문제를 해결할 수 있습니다.&lt;/p&gt;
+&lt;p&gt;저는 &lt;code class=&quot;language-text&quot;&gt;FetchJoin&lt;/code&gt;과 &lt;code class=&quot;language-text&quot;&gt;BatchSize&lt;/code&gt;를 각 상황에 맞게 적절하게 섞어서 사용하기로 하였습니다. &lt;code class=&quot;language-text&quot;&gt;EntityGraph&lt;/code&gt;를 고려하지 않은 이유는 &lt;code class=&quot;language-text&quot;&gt;Join&lt;/code&gt; 방식이 &lt;code class=&quot;language-text&quot;&gt;Left Outer Join&lt;/code&gt;으로 강제된다는 점 때문에 좀 더 상황에 맞게 대처가 가능한 나머지 방법들을 사용하여서 문제를 해결하였습니다.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;FetchJoin을 통한 해결방법&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;FetchJoin은 SQL에서 사용하는 조인의 종류가 아니고 JPQL에서 성능 최적화를 위해 제공하는 기능입니다. FetchJoin을 통해 연관된 엔티티나 컬렉션을 한 번에 같이 조회를 할 수 있습니다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;java&quot;&gt;&lt;pre class=&quot;language-java&quot;&gt;&lt;code class=&quot;language-java&quot;&gt;&lt;span class=&quot;token annotation punctuation&quot;&gt;@Query&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;select distinct u from User u left join fetch u.articles&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token class-name&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;token generics&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token class-name&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;findFetchAll&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;span class=&apos;gatsby-resp-image-wrapper&apos; style=&apos;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 680px; margin-bottom: 16px;&apos;&gt;
+      &lt;a class=&apos;gatsby-resp-image-link&apos; href=&apos;/static/84b4d9a808e0c1e17d02beb2c9695c3b/d5719/img_12.png&apos; style=&apos;display: block&apos; target=&apos;_blank&apos; rel=&apos;noopener&apos;&gt;
+    &lt;span class=&apos;gatsby-resp-image-background-image&apos; style=&quot;padding-bottom: 121.76470588235296%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAYCAYAAAD6S912AAAACXBIWXMAAAsTAAALEwEAmpwYAAACIElEQVQ4y5WVWZKjMBAFOZAXhPcVDHgL2hG+/2XUk2KeXPLgjp6PCkCgrFeLiqyua999df56vfrz+ezzPA/mnAvW3+dxPXd/LR++ZtzM53MPuGka37atn81mfjweR3CE/cKy16apr6rKd13nT6eT3+12Afy/0AAsiiIA9vt9tO12G9Yj0OWp/RQyGwkZ6HQ6DTaZTFJ17pc5VPJHo1GA3m43v9lsYlE+2Y8hk6v7/R7CpCgUCYUyq9oqH4LHohSF88fj0T8ejwA+HA6x8tzLGQVDgBy9pyWjxzBeooyCsKnfXAUgJiCdgAO+6zshLVxmGxmvQC+XSzDAZVmGpkc9ilnDAALme6syAarJy/IYmxxlwDDg72G/n6pMJbdACsRGAOSUMFH3fD7DfdPUfr1exxzaXA4qRIFVCIxzDkxqecb4lmcdggSIp+VyGQDkkJ4kT9qMYgCsC0bPLhaLYaAdFG3bK6SSbESdKqzicOUZ4GDIKOSlQkYlQKkD0OewCVccqpU0SDLNOykEWDd1DBOgCiSgrqxLLfv+UUgb4Enq6D+BFCJOAK1Wq6S6rxy6V7jkA5D6io9Y5zTgyBrv3s9yr9CEy0f0F2AUUEFaAoDUWOuBprFdMrH7CpMzGluhMcFZB2g32/+N/edktsIaDCgkj8C5DoX5aUYmR0/DAXXkUi1BcWhm4Dpq1tIcmt+kPEmtnTTVn1EmJ6zhSMOC6mvqfAMW5RQKeO2L0AAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;img class=&apos;gatsby-resp-image-image&apos; alt=&apos;img 12&apos; title=&apos;img 12&apos; src=&apos;/static/84b4d9a808e0c1e17d02beb2c9695c3b/ca1dc/img_12.png&apos; srcset=&apos;/static/84b4d9a808e0c1e17d02beb2c9695c3b/e7570/img_12.png 170w,
+/static/84b4d9a808e0c1e17d02beb2c9695c3b/f46e7/img_12.png 340w,
+/static/84b4d9a808e0c1e17d02beb2c9695c3b/ca1dc/img_12.png 680w,
+/static/84b4d9a808e0c1e17d02beb2c9695c3b/d5719/img_12.png 758w&apos; sizes=&apos;(max-width: 680px) 100vw, 680px&apos; style=&apos;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&apos; loading=&apos;lazy&apos; decoding=&apos;async&apos;&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;BatchSize를 통한 해결방법&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;하이버네이트가 제공하는 &lt;code class=&quot;language-text&quot;&gt;org.hibernate.annotations.BatchSize&lt;/code&gt; 어노테이션을 이용하면 연관된 엔티티를 조회할 때 지정된 사이즈 만큼 SQL의 IN절을 사용해서 조회합니다. 즉, 연관관계가 있는 엔티티를 조회하면 IN 절을 통해 한번에 조회하게 되어 총 1 + 1의 쿼리가 발생하게 됩니다.&lt;/p&gt;
+&lt;p&gt;&lt;span class=&apos;gatsby-resp-image-wrapper&apos; style=&apos;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 680px; margin-bottom: 16px;&apos;&gt;
+      &lt;a class=&apos;gatsby-resp-image-link&apos; href=&apos;/static/5ff4a14c5aa5c56f2dfcff75585ac572/00a68/img_13.png&apos; style=&apos;display: block&apos; target=&apos;_blank&apos; rel=&apos;noopener&apos;&gt;
+    &lt;span class=&apos;gatsby-resp-image-background-image&apos; style=&quot;padding-bottom: 104.11764705882354%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAVCAYAAABG1c6oAAAACXBIWXMAAAsTAAALEwEAmpwYAAABy0lEQVQ4y6WU2ZKCQAxF/SAVGhQUcANXyv//nYwnTKQbsSxnHlLdLH3IvUmYnE4nOZ/PwpplmURRJM45jTiOH2us6zPGrl2/nyRJIlVVSV3X0jSNrFYrmc1mvzAXHv4UANmQVZ5ncr/f5XK5yH6/l8Vi8T3UgEVRPCHL5VIjSdzfgWmaKhTpllkAc288G/OQDZCyLLU4gLHgXx5SCLJDNkG1KZZBu/gCyAEgVPp4PGpYC/kHPsIBcojsDoeDAjebjYLIEG8tfPl+n754yIP5fK4vIJe2IQyOr3VTK5RDZsWox75kgpfJlKnZbrcagCnUbrfTa55x3U+SGweyTqdTnRayAny73TRrIG3b6p5M+fDoaJpkax1A6/X6mS33AFAgv/K95MF8d8DeDw4jjSIhj4yAUCS/N9/2p58hMCAAkc2KVCta2DZhvAXaTFtRKEhZFjpFPAds2Q6zHi0Kvy08JDvry+bRMtfrVT+Q57lOFT8PPOUP5U9UkCEPOMA1/UemVBmAfQAr+AgeM03cB97bMagyL3GQxjYvuW9tgmRUIJW18zYczxfJ5iFwmxzaiTAF1lbD4H7QNh040uJYYyMfOD4CZSV7U8PeFFG4H8eJqGdNwu5FAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;img class=&apos;gatsby-resp-image-image&apos; alt=&apos;img 13&apos; title=&apos;img 13&apos; src=&apos;/static/5ff4a14c5aa5c56f2dfcff75585ac572/ca1dc/img_13.png&apos; srcset=&apos;/static/5ff4a14c5aa5c56f2dfcff75585ac572/e7570/img_13.png 170w,
+/static/5ff4a14c5aa5c56f2dfcff75585ac572/f46e7/img_13.png 340w,
+/static/5ff4a14c5aa5c56f2dfcff75585ac572/ca1dc/img_13.png 680w,
+/static/5ff4a14c5aa5c56f2dfcff75585ac572/02d09/img_13.png 1020w,
+/static/5ff4a14c5aa5c56f2dfcff75585ac572/9d567/img_13.png 1360w,
+/static/5ff4a14c5aa5c56f2dfcff75585ac572/00a68/img_13.png 1458w&apos; sizes=&apos;(max-width: 680px) 100vw, 680px&apos; style=&apos;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&apos; loading=&apos;lazy&apos; decoding=&apos;async&apos;&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&apos;gatsby-resp-image-wrapper&apos; style=&apos;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 680px; margin-bottom: 16px;&apos;&gt;
+      &lt;a class=&apos;gatsby-resp-image-link&apos; href=&apos;/static/a92e11247c963d557182fb48ffecd3b2/6e693/img_14.png&apos; style=&apos;display: block&apos; target=&apos;_blank&apos; rel=&apos;noopener&apos;&gt;
+    &lt;span class=&apos;gatsby-resp-image-background-image&apos; style=&quot;padding-bottom: 61.76470588235294%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAYAAABiDJ37AAAACXBIWXMAAAsTAAALEwEAmpwYAAABI0lEQVQoz5WTV3LDMAwFdSGJ6r33+18ImcUYcuKSOB8YUCCxfHykvKqqZF1XjaIoJE1TyfNcsizToMa31cuyvGqWWUc9SRLxnHM66PteocuyyDzPmqdpkm3bZN/3K8ZxlK7rpGkazW3bKmwYBoV7URSJc4HutiyzNrGQRoAspLmua20Mw1AQ8SqYuwGdcHTUHMehagGiGLUcyfd9CYJAm+h5FxeQ3QGc56lAlAIzMLW+7ySO4wtKfownIAo5JmMyXmIFGVsM9BZok2YsqjAaRXhpxzc//1SIOm6HRrIFavDue7P59Ar0QyGN7I4ybtOeBGMu4m56+CvsAqIIoMFQx61jA3N3hR8A7VLwBoV4hTp7vKj/N5ABf4sdDbjV7cF+AiO+AAtMh1i2UfzGAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;img class=&apos;gatsby-resp-image-image&apos; alt=&apos;img 14&apos; title=&apos;img 14&apos; src=&apos;/static/a92e11247c963d557182fb48ffecd3b2/ca1dc/img_14.png&apos; srcset=&apos;/static/a92e11247c963d557182fb48ffecd3b2/e7570/img_14.png 170w,
+/static/a92e11247c963d557182fb48ffecd3b2/f46e7/img_14.png 340w,
+/static/a92e11247c963d557182fb48ffecd3b2/ca1dc/img_14.png 680w,
+/static/a92e11247c963d557182fb48ffecd3b2/02d09/img_14.png 1020w,
+/static/a92e11247c963d557182fb48ffecd3b2/9d567/img_14.png 1360w,
+/static/a92e11247c963d557182fb48ffecd3b2/6e693/img_14.png 1660w&apos; sizes=&apos;(max-width: 680px) 100vw, 680px&apos; style=&apos;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&apos; loading=&apos;lazy&apos; decoding=&apos;async&apos;&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;h3&gt;추가적인 문제 상황 - 일대다 관계에서의 페이지네이션&lt;/h3&gt;
+&lt;p&gt;1 : N 관계에서의 N + 1 문제 해결과 동시에 페이지네이션까지 고려해야 한다면 &lt;code class=&quot;language-text&quot;&gt;FetchJoin&lt;/code&gt;이 불가능합니다.&lt;/p&gt;
+&lt;p&gt;RDMS 관점에서 보면 일대다 관계는 &lt;code class=&quot;language-text&quot;&gt;Collection Join&lt;/code&gt;이 되기 때문에 드라이빙 테이블을 기준으로 드리븐 테이블의 값들이 중복되게 됩니다. 이렇게 조회 값들이 중복된 상태에서  &lt;code class=&quot;language-text&quot;&gt;Collection Fetch&lt;/code&gt;를 해서 &lt;code class=&quot;language-text&quot;&gt;Paging&lt;/code&gt;을 하긴했지만 &lt;code class=&quot;language-text&quot;&gt;applying in memory&lt;/code&gt; 즉, 인메모리를 사용해서 조인을 하는 방법을 사용하기 때문입니다. &lt;strong&gt;이 방법은 &lt;code class=&quot;language-text&quot;&gt;OOM&lt;/code&gt;이 발생할 확률이 매우 높아서 사용을 하면 안됩니다&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;그렇기 때문에 페이징을 적용해야 하는 경우 &lt;code class=&quot;language-text&quot;&gt;BatchSize&lt;/code&gt;로 해결하는 방법이 사실상 가장 좋은 해결책입니다.&lt;/p&gt;
+&lt;h2&gt;마무리&lt;/h2&gt;
+&lt;p&gt;지금까지 제가 &lt;code class=&quot;language-text&quot;&gt;JPA&lt;/code&gt;를 사용하면서 경험했던 트러블 내용들을 한번 정리해보았습니다. &lt;code class=&quot;language-text&quot;&gt;JPA&lt;/code&gt;는 정말 편리하게 개발을 도와주어 개발 능률을 올려주는 도구이기도 하지만 잘못된 사용시 원인 파악이 힘들어 오히려 능률을 떨어트리는 양날의 검같은 도구인 것 같다는 생각이 사용하면 할수록 드는 것 같습니다. 앞으로도 &lt;code class=&quot;language-text&quot;&gt;JPA&lt;/code&gt;를 항상 조심해서 사용해야겠다는 생각을 하면서 글을 마치겠습니다.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;참고한 곳&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://docs.jboss.org/hibernate/orm/5.4/userguide/html_single/Hibernate_User_Guide.html&quot;&gt;https://docs.jboss.org/hibernate/orm/5.4/userguide/html&lt;em&gt;single/Hibernate&lt;/em&gt;User_Guide.htm&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;</content:encoded></item><item><title><![CDATA[Nginx와 Gzip을 활용한 프론트 최적화]]></title><description><![CDATA[문제 상황…]]></description><link>https://wishoon.github.io/Nginx와-Gzip을-활용한-프론트-최적화/</link><guid isPermaLink="false">https://wishoon.github.io/Nginx와-Gzip을-활용한-프론트-최적화/</guid><pubDate>Sun, 16 Oct 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;문제 상황&lt;/h2&gt;
 &lt;p&gt;5차 데모를 앞두고 프론트 팀의 요구사항으로 다음과 같은 요구사항을 확인할 수 있었습니다.&lt;/p&gt;
 &lt;p&gt;&lt;span class=&apos;gatsby-resp-image-wrapper&apos; style=&apos;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 680px; margin-bottom: 16px;&apos;&gt;
