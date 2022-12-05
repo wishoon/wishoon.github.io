@@ -6,9 +6,9 @@
 <url> <loc>https://wishoon.github.io/JPA를-사용함으로서-겪었던-문제들/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://wishoon.github.io/테스트에서의 @Transactional/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://wishoon.github.io/DAO와-Repository/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://wishoon.github.io/Transactional과-Lock-1/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://wishoon.github.io/동시성 문제 해결을 통한 제고 시스템 구현하기 - 1/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://wishoon.github.io/series/Spring-AOP-알아보기</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://wishoon.github.io/series/Transactional과-Lock</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://wishoon.github.io/series/동시성-문제-해결을-통한-제고-시스템-구현하기</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://wishoon.github.io/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://wishoon.github.io/search/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://wishoon.github.io/series/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
