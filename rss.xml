@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[RSS Feed of rookie]]></title><description><![CDATA[시간이 흘러도 변화에 대응되는 코드를 추구합니다.]]></description><link>https://wishoon.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Sun, 11 Dec 2022 04:05:52 GMT</lastBuildDate><item><title><![CDATA[현재 시간을 검증해야 하는 로직 개선에 대해 고민해보기]]></title><description><![CDATA[…]]></description><link>https://wishoon.github.io/현재 시간을 검증해야 하는 로직 개선에 대해 고민해보기/</link><guid isPermaLink="false">https://wishoon.github.io/현재 시간을 검증해야 하는 로직 개선에 대해 고민해보기/</guid><pubDate>Sat, 10 Dec 2022 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;현재 우아한테크코스 기간동안 진행했던 프로젝트인 “꼭꼭” 프로젝트를 개선하는 작업을 개인적으로 해보고 있습니다. 개선사항으로 느꼈던 부분 중 하나가 바로 “현재 시간을 검증해야 하는 로직”이였는데요. 이번 글에서는 해당 부분을 개선하기 위해서 어떤 방법을 고민했었는지를 작성해보는 시간을 가져보려고 합니다.&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[RSS Feed of rookie]]></title><description><![CDATA[시간이 흘러도 변화에 대응되는 코드를 추구합니다.]]></description><link>https://wishoon.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Sun, 11 Dec 2022 06:02:24 GMT</lastBuildDate><item><title><![CDATA[현재 시간을 검증해야 하는 로직 개선에 대해 고민해보기]]></title><description><![CDATA[…]]></description><link>https://wishoon.github.io/현재 시간을 검증해야 하는 로직 개선에 대해 고민해보기/</link><guid isPermaLink="false">https://wishoon.github.io/현재 시간을 검증해야 하는 로직 개선에 대해 고민해보기/</guid><pubDate>Sat, 10 Dec 2022 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;현재 우아한테크코스 기간동안 진행했던 프로젝트인 “꼭꼭” 프로젝트를 개선하는 작업을 개인적으로 해보고 있습니다. 개선사항으로 느꼈던 부분 중 하나가 바로 “현재 시간을 검증해야 하는 로직”이였는데요. 이번 글에서는 해당 부분을 개선하기 위해서 어떤 방법을 고민했었는지를 작성해보는 시간을 가져보려고 합니다.&lt;/p&gt;
 &lt;h2&gt;문제 사항은 무엇인가?&lt;/h2&gt;
 &lt;p&gt;제작하고 있는 어플리케이션은 쿠폰을 발급하고, 사용을 신청하고, 사용을 승인하는 상태 변경 흐름을 기반으로 동작하게 됩니다. 이때 발급된 쿠폰에 대하여 사용 신청을 하는 로직을 구성하면서 몇가지 고민 상황을 만나게 됩니다.&lt;/p&gt;
 &lt;h2&gt;고민 1. 시간을 검증하는 책임을 어디에 둘 것인가?&lt;/h2&gt;
@@ -706,6 +706,183 @@
          rLock&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;unlock&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
     &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
 &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;Redis 테스트 환경 구축하기&lt;/h2&gt;
+&lt;p&gt;레디스라는 외부 인프라를 사용하여 분산 락을 구현하였기 때문에, 테스트에서도 레디스 환경을 구축해야만 정상적으로 로직이 동작하는지 확인을 할 수 있습니다. 테스트 환경에서 레디스를 사용하기 위해서는 크게 2가지 방법을 고민해볼 수 있습니다. 하나는 &lt;code class=&quot;language-text&quot;&gt;Docker Container를 통한&lt;/code&gt; 레디스 사용과 &lt;code class=&quot;language-text&quot;&gt;Embedded Redis&lt;/code&gt;를 통한 레디스 사용입니다.&lt;/p&gt;
+&lt;h3&gt;Test Container(Redis)&lt;/h3&gt;
+&lt;p&gt;TestContainer는 테스트 환경에서 도커 컨테이너를 실행할 수 있는 라이브러리 입니다. Testcontainer를 이용하면 조금 더 실제 환경에 가까운 테스트를 수행할 수 있습니다. 또한 도커만 설치되어 있다면 별도의 환경구축이 필요하지가 않습니다.&lt;/p&gt;
+&lt;p&gt;다만 컨테이너를 생성, 삭제하는 과정 때문에 테스트가 매우 느려진다는 단점이 존재합니다.&lt;/p&gt;
+&lt;p&gt;TestContainer를 실제로 사용하는 방법은 간단합니다. 다음과 같이 의존성을 등록해줍니다.&lt;/p&gt;
+&lt;p&gt;&lt;span class=&apos;gatsby-resp-image-wrapper&apos; style=&apos;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 680px; margin-bottom: 16px;&apos;&gt;
+      &lt;a class=&apos;gatsby-resp-image-link&apos; href=&apos;/static/05da208a342bc9d9f79289a8a129f68b/f97d7/img_2.png&apos; style=&apos;display: block&apos; target=&apos;_blank&apos; rel=&apos;noopener&apos;&gt;
+    &lt;span class=&apos;gatsby-resp-image-background-image&apos; style=&quot;padding-bottom: 7.647058823529412%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAACCAYAAABYBvyLAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAUklEQVQI112KQQ7AIAgE/Q+waE007f//tYJp06aHyZIZyhiTCQCqCiXIVdOXx8ctvyafln9lnheT1iv9AA22tybdA9BbeLdwvvv2d0f4JP/g4AJMKD28DZscgwAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;img class=&apos;gatsby-resp-image-image&apos; alt=&apos;img 2&apos; title=&apos;img 2&apos; src=&apos;/static/05da208a342bc9d9f79289a8a129f68b/ca1dc/img_2.png&apos; srcset=&apos;/static/05da208a342bc9d9f79289a8a129f68b/e7570/img_2.png 170w,
+/static/05da208a342bc9d9f79289a8a129f68b/f46e7/img_2.png 340w,
+/static/05da208a342bc9d9f79289a8a129f68b/ca1dc/img_2.png 680w,
+/static/05da208a342bc9d9f79289a8a129f68b/02d09/img_2.png 1020w,
+/static/05da208a342bc9d9f79289a8a129f68b/9d567/img_2.png 1360w,
+/static/05da208a342bc9d9f79289a8a129f68b/f97d7/img_2.png 2000w&apos; sizes=&apos;(max-width: 680px) 100vw, 680px&apos; style=&apos;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&apos; loading=&apos;lazy&apos; decoding=&apos;async&apos;&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;이후 테스트 실행 시, Redis 이미지에 새로운 컨테이너를 생성하고 실행한 다음, 컨테이너를 재사용하는 로직까지 구성해주면 테스트 환경에서도 Redis를 실행할 수 있습니다.&lt;/p&gt;
+&lt;p&gt;&lt;span class=&apos;gatsby-resp-image-wrapper&apos; style=&apos;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 680px; margin-bottom: 16px;&apos;&gt;
+      &lt;a class=&apos;gatsby-resp-image-link&apos; href=&apos;/static/f369c9d112c9cd29199e294977fdf013/f97d7/img_3.png&apos; style=&apos;display: block&apos; target=&apos;_blank&apos; rel=&apos;noopener&apos;&gt;
+    &lt;span class=&apos;gatsby-resp-image-background-image&apos; style=&quot;padding-bottom: 43.529411764705884%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAYAAAAywQxIAAAACXBIWXMAAAsTAAALEwEAmpwYAAABIUlEQVQoz31SW3LDIAz0cWpAQjz8iOMkP+000/vfZyvAcT2ZpB9rYRCrlZbushrMs4MXgXMO1loYa2DMa5Rze1w/oRvEIgpBvEcIASIBzF7JaS9g3QGmFXxFVgkTG4jrweYDTKRkAd4JRGOBIwfiB+yu7K3CHDzGacJpmbT1rHHEoP8x5aqwKKWi1m5R996RVUKjnxw9vu+fuP981bhebxjGRhpiQvCxIkoCEf9PSKVNL6rqhDxMOkO9rO05nVPf9w3mD+/IHvsdqxkp5+qy1zVRM2I3xLrD2j653goe59rFlHA6r5jmpc5Okrqt8IG07RHLesX5cqs583Kur0C0OHuNIdaRlC53haV6mUsDbUa0J1LPeDvjDZrT8lpk3Tsa9QsAyRSUEmNkZgAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;img class=&apos;gatsby-resp-image-image&apos; alt=&apos;img 3&apos; title=&apos;img 3&apos; src=&apos;/static/f369c9d112c9cd29199e294977fdf013/ca1dc/img_3.png&apos; srcset=&apos;/static/f369c9d112c9cd29199e294977fdf013/e7570/img_3.png 170w,
+/static/f369c9d112c9cd29199e294977fdf013/f46e7/img_3.png 340w,
+/static/f369c9d112c9cd29199e294977fdf013/ca1dc/img_3.png 680w,
+/static/f369c9d112c9cd29199e294977fdf013/02d09/img_3.png 1020w,
+/static/f369c9d112c9cd29199e294977fdf013/9d567/img_3.png 1360w,
+/static/f369c9d112c9cd29199e294977fdf013/f97d7/img_3.png 2000w&apos; sizes=&apos;(max-width: 680px) 100vw, 680px&apos; style=&apos;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&apos; loading=&apos;lazy&apos; decoding=&apos;async&apos;&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;h3&gt;Embedded Redis&lt;/h3&gt;
+&lt;p&gt;하지만 저는 Embedded Redis를 통해서 문제를 해결하고 싶었습니다. Embedded Redis로 테스트를 환경을 구축하고자 한 이유는 다음과 같습니다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Test Container는 컨테이너 생성, 삭제로 인해 테스트 속도가 매우 느려진다.&lt;/li&gt;
+&lt;li&gt;사용자의 컴퓨터에 도커가 필수적으로 깔려있어야 하는 제약사항이 붙는다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;이러한 이유를 바탕으로 Embedded Redis를 통한 테스트 환경을 구축을 진행하였습니다.&lt;/p&gt;
+&lt;p&gt;Embedded Redis를 사용하기 위해서는 &lt;a href=&quot;https://github.com/ozimov/embedded-redis&quot;&gt;it.ozimov.embedded-redis&lt;/a&gt; 라는 의존성을 주입해야 합니다.&lt;/p&gt;
+&lt;p&gt;&lt;span class=&apos;gatsby-resp-image-wrapper&apos; style=&apos;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 680px; margin-bottom: 16px;&apos;&gt;
+      &lt;a class=&apos;gatsby-resp-image-link&apos; href=&apos;/static/95f451bcb336d05e4f9adc0eabe5cb64/f97d7/img_4.png&apos; style=&apos;display: block&apos; target=&apos;_blank&apos; rel=&apos;noopener&apos;&gt;
+    &lt;span class=&apos;gatsby-resp-image-background-image&apos; style=&quot;padding-bottom: 4.705882352941177%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAABCAYAAADeko4lAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAPUlEQVQI1yWKwQ3AIAwDWShxEmhVEGL/rQwNj9P5JJcxF/uY/A7RnN5AUSFcGY+lfyyQrq/lx+pFIdnwuzf1+x+Z/fxQsAAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;img class=&apos;gatsby-resp-image-image&apos; alt=&apos;img 4&apos; title=&apos;img 4&apos; src=&apos;/static/95f451bcb336d05e4f9adc0eabe5cb64/ca1dc/img_4.png&apos; srcset=&apos;/static/95f451bcb336d05e4f9adc0eabe5cb64/e7570/img_4.png 170w,
+/static/95f451bcb336d05e4f9adc0eabe5cb64/f46e7/img_4.png 340w,
+/static/95f451bcb336d05e4f9adc0eabe5cb64/ca1dc/img_4.png 680w,
+/static/95f451bcb336d05e4f9adc0eabe5cb64/02d09/img_4.png 1020w,
+/static/95f451bcb336d05e4f9adc0eabe5cb64/9d567/img_4.png 1360w,
+/static/95f451bcb336d05e4f9adc0eabe5cb64/f97d7/img_4.png 2000w&apos; sizes=&apos;(max-width: 680px) 100vw, 680px&apos; style=&apos;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&apos; loading=&apos;lazy&apos; decoding=&apos;async&apos;&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;그리고 테스트 환경에서 Embedded Redis가 동작하도록 설정을 작성해줍니다.&lt;/p&gt;
+&lt;p&gt;&lt;span class=&apos;gatsby-resp-image-wrapper&apos; style=&apos;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 680px; margin-bottom: 16px;&apos;&gt;
+      &lt;a class=&apos;gatsby-resp-image-link&apos; href=&apos;/static/07c76f1fefbfbe70a991aeb53634ea84/f97d7/img_5.png&apos; style=&apos;display: block&apos; target=&apos;_blank&apos; rel=&apos;noopener&apos;&gt;
+    &lt;span class=&apos;gatsby-resp-image-background-image&apos; style=&quot;padding-bottom: 51.17647058823529%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAYAAAC0VX7mAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA00lEQVQoz52SS27EMAxDc52xfv7FTtpi7n8rVnEGwbSLos6C0MaQH0ktz2dAygxRRgjhh4jomv/V8tUJeyPkZFA9JaK3lo2FUQNaYaSkiCnCojqtvB7MUy4mAT0xaqnIrmQJphEU6Jb1JRqh14BaZVhlFijzRTdNqE74USP2WlFyRm8NWytOvLqafyJzC4NbY06IWjxHn9HtOiEfopP0ePNO/HeGbrnVh7f7ODMj+nU+c7ZHKZu3/Ll2tHV3y6uXItei6QxpFOBFiA2Zmdu9d4OHvgEvui8+E9u42AAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;img class=&apos;gatsby-resp-image-image&apos; alt=&apos;img 5&apos; title=&apos;img 5&apos; src=&apos;/static/07c76f1fefbfbe70a991aeb53634ea84/ca1dc/img_5.png&apos; srcset=&apos;/static/07c76f1fefbfbe70a991aeb53634ea84/e7570/img_5.png 170w,
+/static/07c76f1fefbfbe70a991aeb53634ea84/f46e7/img_5.png 340w,
+/static/07c76f1fefbfbe70a991aeb53634ea84/ca1dc/img_5.png 680w,
+/static/07c76f1fefbfbe70a991aeb53634ea84/02d09/img_5.png 1020w,
+/static/07c76f1fefbfbe70a991aeb53634ea84/9d567/img_5.png 1360w,
+/static/07c76f1fefbfbe70a991aeb53634ea84/f97d7/img_5.png 2000w&apos; sizes=&apos;(max-width: 680px) 100vw, 680px&apos; style=&apos;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&apos; loading=&apos;lazy&apos; decoding=&apos;async&apos;&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;여기까지 하면 기본적인 환경설정은 끝나게 됩니다. 하지만 몇가지 문제 상황을 만나게 됩니다.&lt;/p&gt;
+&lt;br&gt;
+&lt;p&gt;&lt;strong&gt;첫 번째 문제는 Embedded Redis와 aarch64 아키텍처와의 호환성 문제&lt;/strong&gt;입니다. 저는 M1 맥북을 통해서 개발을 하고 있기 때문에 &lt;code class=&quot;language-text&quot;&gt;aarch64&lt;/code&gt; 운영체제에서 개발을 하고 있다고 할 수 있습니다.&lt;/p&gt;
+&lt;p&gt;하지만 Embedded Redis는 aarch64 아키텍처를 지원하지 않습니다.&lt;/p&gt;
+&lt;p&gt;&lt;span class=&apos;gatsby-resp-image-wrapper&apos; style=&apos;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 680px; margin-bottom: 16px;&apos;&gt;
+      &lt;a class=&apos;gatsby-resp-image-link&apos; href=&apos;/static/8ed4e2ae26e7840fbcd6390cfde77b33/f97d7/img_6.png&apos; style=&apos;display: block&apos; target=&apos;_blank&apos; rel=&apos;noopener&apos;&gt;
+    &lt;span class=&apos;gatsby-resp-image-background-image&apos; style=&quot;padding-bottom: 34.705882352941174%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAHCAYAAAAIy204AAAACXBIWXMAAAsTAAALEwEAmpwYAAABE0lEQVQoz0WQbbKDIAxFu50K4UtREaSt0/1v6b4EePbHmQBhwuE+NqeQgsbqNMrmcJ0LrrLgw8QYQWRAuqOUgtID1dFjr5XGNE14KF7sS0ZZX8hbRalv1M8X5+vC+b6Qc8U7fVH3D9JyIASHeWU2jxDdzRw9rCEZqNrrhmzHWljrWm0YA9t6bEnERhqa2Ij0D60Guhtuc0KOJ1IsyGdFZTMxzfWFlAoO7u1i5z18tLeVCwZBbBeP6fn8/7JqZs74jhfCqL7ZWjPge2JHlkCm20mlYXkPjGHjfEqzSPlsdkepjX3nM85Y7shPvGPLxbKpa1Uspc6rPG7wINPzuy3cMHN93QxHvtI3nLfYNDPzy5Gs7Al/4UXcwgm5CQgAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;img class=&apos;gatsby-resp-image-image&apos; alt=&apos;img 6&apos; title=&apos;img 6&apos; src=&apos;/static/8ed4e2ae26e7840fbcd6390cfde77b33/ca1dc/img_6.png&apos; srcset=&apos;/static/8ed4e2ae26e7840fbcd6390cfde77b33/e7570/img_6.png 170w,
+/static/8ed4e2ae26e7840fbcd6390cfde77b33/f46e7/img_6.png 340w,
+/static/8ed4e2ae26e7840fbcd6390cfde77b33/ca1dc/img_6.png 680w,
+/static/8ed4e2ae26e7840fbcd6390cfde77b33/02d09/img_6.png 1020w,
+/static/8ed4e2ae26e7840fbcd6390cfde77b33/9d567/img_6.png 1360w,
+/static/8ed4e2ae26e7840fbcd6390cfde77b33/f97d7/img_6.png 2000w&apos; sizes=&apos;(max-width: 680px) 100vw, 680px&apos; style=&apos;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&apos; loading=&apos;lazy&apos; decoding=&apos;async&apos;&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;이 때문에 Redis 서버를 실행시키면 다음과 같은 에러를 만날 수 있습니다.&lt;/p&gt;
+&lt;p&gt;&lt;span class=&apos;gatsby-resp-image-wrapper&apos; style=&apos;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 680px; margin-bottom: 16px;&apos;&gt;
+      &lt;a class=&apos;gatsby-resp-image-link&apos; href=&apos;/static/e2f6abdc1cc9451f3be0c3792e21bcc5/f97d7/img_7.png&apos; style=&apos;display: block&apos; target=&apos;_blank&apos; rel=&apos;noopener&apos;&gt;
+    &lt;span class=&apos;gatsby-resp-image-background-image&apos; style=&quot;padding-bottom: 16.470588235294116%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAADCAYAAACTWi8uAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAg0lEQVQI14WOWQrDMAxEfR5vsWXHcQJdwC1p73+g6aihUOhHPx6yhPw05pIT9lIwJONRBE+yi+BeK66tYSMLqexTSgghwHsPay2ccz8YFd4oUIaK+XH0jmWeIexjjIeAyyr5h9mmCWdePpHGdJVp+rpCOM/eQZiokEypvr/5zN+Eo74A2EpeGl89Fx0AAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;img class=&apos;gatsby-resp-image-image&apos; alt=&apos;img 7&apos; title=&apos;img 7&apos; src=&apos;/static/e2f6abdc1cc9451f3be0c3792e21bcc5/ca1dc/img_7.png&apos; srcset=&apos;/static/e2f6abdc1cc9451f3be0c3792e21bcc5/e7570/img_7.png 170w,
+/static/e2f6abdc1cc9451f3be0c3792e21bcc5/f46e7/img_7.png 340w,
+/static/e2f6abdc1cc9451f3be0c3792e21bcc5/ca1dc/img_7.png 680w,
+/static/e2f6abdc1cc9451f3be0c3792e21bcc5/02d09/img_7.png 1020w,
+/static/e2f6abdc1cc9451f3be0c3792e21bcc5/9d567/img_7.png 1360w,
+/static/e2f6abdc1cc9451f3be0c3792e21bcc5/f97d7/img_7.png 2000w&apos; sizes=&apos;(max-width: 680px) 100vw, 680px&apos; style=&apos;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&apos; loading=&apos;lazy&apos; decoding=&apos;async&apos;&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;해당 문제를 해결하기 위해 검색을 해본 결과, 공식문서에서는 사용자가 직접 바이너리를 지정해서 이용하는 방법이 있다고 설명이 적혀있었습니다. 이를 위해서, 실제 RedisServer 파일을 받아와 프로젝트의 resource에 추가하는 방법을 사용하였습니다.&lt;/p&gt;
+&lt;p&gt;&lt;span class=&apos;gatsby-resp-image-wrapper&apos; style=&apos;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 680px; margin-bottom: 16px;&apos;&gt;
+      &lt;a class=&apos;gatsby-resp-image-link&apos; href=&apos;/static/8d955cdc1bdf17869524d43c59fbcf9b/f97d7/img_8.png&apos; style=&apos;display: block&apos; target=&apos;_blank&apos; rel=&apos;noopener&apos;&gt;
+    &lt;span class=&apos;gatsby-resp-image-background-image&apos; style=&quot;padding-bottom: 21.764705882352942%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAECAYAAACOXx+WAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAwElEQVQY042PQQuCQBCF/VFRYZoVxrq6q2utZkoK1T2oc9Q/f81sFHTr8DGPGea9GS9crBDFAtXOoiZs08FsLYqNhVQ5Apozs2j5F54/XzgREHV/QtUN0EVJphVSXaA99NBmg8ksxDSY//DpcXU6jOB9nPmK0dTHcDzj/ngiyTSqZo8sN1CmfFcKYnOuksLycouEvuCZ3TWu972QGfsBvdzicr1hLVNktMgLUufuWg5ZJyliQmTKGYtUuRnrWEi8AGrQk9c+A+ozAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;img class=&apos;gatsby-resp-image-image&apos; alt=&apos;img 8&apos; title=&apos;img 8&apos; src=&apos;/static/8d955cdc1bdf17869524d43c59fbcf9b/ca1dc/img_8.png&apos; srcset=&apos;/static/8d955cdc1bdf17869524d43c59fbcf9b/e7570/img_8.png 170w,
+/static/8d955cdc1bdf17869524d43c59fbcf9b/f46e7/img_8.png 340w,
+/static/8d955cdc1bdf17869524d43c59fbcf9b/ca1dc/img_8.png 680w,
+/static/8d955cdc1bdf17869524d43c59fbcf9b/02d09/img_8.png 1020w,
+/static/8d955cdc1bdf17869524d43c59fbcf9b/9d567/img_8.png 1360w,
+/static/8d955cdc1bdf17869524d43c59fbcf9b/f97d7/img_8.png 2000w&apos; sizes=&apos;(max-width: 680px) 100vw, 680px&apos; style=&apos;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&apos; loading=&apos;lazy&apos; decoding=&apos;async&apos;&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;그리고 EmbeddedRedisConfig에서 실제 설정파일이 적용될 때 아키텍쳐에 따라서 파일을 변경되도록 로직을 구성해주면 정상적으로 &lt;code class=&quot;language-text&quot;&gt;aarch64&lt;/code&gt; 에서도 &lt;code class=&quot;language-text&quot;&gt;EmbeddedRedis&lt;/code&gt;를 사용할 수 있습니다.&lt;/p&gt;
+&lt;p&gt;&lt;span class=&apos;gatsby-resp-image-wrapper&apos; style=&apos;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 680px; margin-bottom: 16px;&apos;&gt;
+      &lt;a class=&apos;gatsby-resp-image-link&apos; href=&apos;/static/60224e7217f750e259e4a04ccbfd4918/f97d7/img_9.png&apos; style=&apos;display: block&apos; target=&apos;_blank&apos; rel=&apos;noopener&apos;&gt;
+    &lt;span class=&apos;gatsby-resp-image-background-image&apos; style=&quot;padding-bottom: 58.235294117647065%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAYAAABiDJ37AAAACXBIWXMAAAsTAAALEwEAmpwYAAABCElEQVQoz51TW27DMAzLdeqHHrYTZ+v9z8WxzromG4o1/SAIOAJFUcrULMJdYe4wM8IRY0QIYfBZTOucUDxRUCGakXL8I3hGfCoUKF5RaoMJHcrD4atC+7qpt4i5peEuZ4FkuvxV/B/2ddPiEde1oa8fI8NqGdUNXipUjU0yRPQbsjUdTAOJzVM6Okwx0eGKvlzhKlyQU6wNQfMyuFSCvH9TNrjFI2xwEMwporKg1c6iTMHNnamPTGMMuFwuPwjhzk9Gzklg2TnedjbvnMrBoUgaedyyuOfxLPSXzua6BHRu2bgAVaU4RcfHN+9QmGFnfr19YpnnseEQjoKn/pTbmI+Hzd3ZMff4AvrCbHB/ZNz4AAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;img class=&apos;gatsby-resp-image-image&apos; alt=&apos;img 9&apos; title=&apos;img 9&apos; src=&apos;/static/60224e7217f750e259e4a04ccbfd4918/ca1dc/img_9.png&apos; srcset=&apos;/static/60224e7217f750e259e4a04ccbfd4918/e7570/img_9.png 170w,
+/static/60224e7217f750e259e4a04ccbfd4918/f46e7/img_9.png 340w,
+/static/60224e7217f750e259e4a04ccbfd4918/ca1dc/img_9.png 680w,
+/static/60224e7217f750e259e4a04ccbfd4918/02d09/img_9.png 1020w,
+/static/60224e7217f750e259e4a04ccbfd4918/9d567/img_9.png 1360w,
+/static/60224e7217f750e259e4a04ccbfd4918/f97d7/img_9.png 2000w&apos; sizes=&apos;(max-width: 680px) 100vw, 680px&apos; style=&apos;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&apos; loading=&apos;lazy&apos; decoding=&apos;async&apos;&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;두 번째 문제는 구동되는 JDK의 아키텍쳐 문제&lt;/strong&gt;입니다. 역시 M1 맥북을 사용하고 있기 때문에 &lt;strong&gt;Apple 아키텍쳐로 실행&lt;/strong&gt;되어야 하지만 어째서인지 제 컴퓨터에 설치된 Java는 Intel 아키텍쳐로 실행되고 있었습니다.&lt;/p&gt;
+&lt;p&gt;&lt;span class=&apos;gatsby-resp-image-wrapper&apos; style=&apos;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 680px; margin-bottom: 16px;&apos;&gt;
+      &lt;a class=&apos;gatsby-resp-image-link&apos; href=&apos;/static/efb3544994b976d48de6170db0fd0f8f/f97d7/img_10.png&apos; style=&apos;display: block&apos; target=&apos;_blank&apos; rel=&apos;noopener&apos;&gt;
+    &lt;span class=&apos;gatsby-resp-image-background-image&apos; style=&quot;padding-bottom: 7.647058823529412%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAACCAYAAABYBvyLAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAaUlEQVQI1y2NWRKAIAxDOYxgESjI4rjc/1yxVD86yaTpq1ldgo6NoJWRucOLjnZrzrHBU4ZbIjg1kGTBF+kN2CWoai91FPFmQuiHemKU/BWO8Sh4PtgE4OTh3M1+ihWtXgqs+6n3eznUv/MbPNXyLgmmAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;img class=&apos;gatsby-resp-image-image&apos; alt=&apos;img 10&apos; title=&apos;img 10&apos; src=&apos;/static/efb3544994b976d48de6170db0fd0f8f/ca1dc/img_10.png&apos; srcset=&apos;/static/efb3544994b976d48de6170db0fd0f8f/e7570/img_10.png 170w,
+/static/efb3544994b976d48de6170db0fd0f8f/f46e7/img_10.png 340w,
+/static/efb3544994b976d48de6170db0fd0f8f/ca1dc/img_10.png 680w,
+/static/efb3544994b976d48de6170db0fd0f8f/02d09/img_10.png 1020w,
+/static/efb3544994b976d48de6170db0fd0f8f/9d567/img_10.png 1360w,
+/static/efb3544994b976d48de6170db0fd0f8f/f97d7/img_10.png 2000w&apos; sizes=&apos;(max-width: 680px) 100vw, 680px&apos; style=&apos;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&apos; loading=&apos;lazy&apos; decoding=&apos;async&apos;&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;이 때문에 정상적으로 &lt;code class=&quot;language-text&quot;&gt;aarch64&lt;/code&gt; 아키텍쳐를 인식하지 못해 RedisServer가 실행되지 못했습니다. 이러한 문제를 해결은 간단합니다. &lt;code class=&quot;language-text&quot;&gt;aarch64&lt;/code&gt;를 지원하는 JDK로 재설치를 하면 해당 문제를 해결할 수 있습니다.&lt;/p&gt;
+&lt;p&gt;&lt;span class=&apos;gatsby-resp-image-wrapper&apos; style=&apos;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 680px; margin-bottom: 16px;&apos;&gt;
+      &lt;a class=&apos;gatsby-resp-image-link&apos; href=&apos;/static/4dfeeb86ba527714e9abb54f735ac8c8/f97d7/img_11.png&apos; style=&apos;display: block&apos; target=&apos;_blank&apos; rel=&apos;noopener&apos;&gt;
+    &lt;span class=&apos;gatsby-resp-image-background-image&apos; style=&quot;padding-bottom: 4.705882352941177%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAABCAYAAADeko4lAAAACXBIWXMAAAsTAAALEwEAmpwYAAAARElEQVQI1z3JWQqAMBAEUQ/jln0Zh2Dw/tcqo4gfTfHoSZPg5h2/mL/FRsJqEZ9JJpDHnq8Ox83Rpb2Wz60o/WhcenIDsG0eoS1vuu8AAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;img class=&apos;gatsby-resp-image-image&apos; alt=&apos;img 11&apos; title=&apos;img 11&apos; src=&apos;/static/4dfeeb86ba527714e9abb54f735ac8c8/ca1dc/img_11.png&apos; srcset=&apos;/static/4dfeeb86ba527714e9abb54f735ac8c8/e7570/img_11.png 170w,
+/static/4dfeeb86ba527714e9abb54f735ac8c8/f46e7/img_11.png 340w,
+/static/4dfeeb86ba527714e9abb54f735ac8c8/ca1dc/img_11.png 680w,
+/static/4dfeeb86ba527714e9abb54f735ac8c8/02d09/img_11.png 1020w,
+/static/4dfeeb86ba527714e9abb54f735ac8c8/9d567/img_11.png 1360w,
+/static/4dfeeb86ba527714e9abb54f735ac8c8/f97d7/img_11.png 2000w&apos; sizes=&apos;(max-width: 680px) 100vw, 680px&apos; style=&apos;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&apos; loading=&apos;lazy&apos; decoding=&apos;async&apos;&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;해당 과정을 통해서 Embedded Redis에서 단일 테스트를 정상적으로 실행시킬 수 있었습니다.&lt;/p&gt;
+&lt;p&gt;&lt;span class=&apos;gatsby-resp-image-wrapper&apos; style=&apos;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 680px; margin-bottom: 16px;&apos;&gt;
+      &lt;a class=&apos;gatsby-resp-image-link&apos; href=&apos;/static/9efb64fed3a7fceefdb25e66937ff3ba/f97d7/img_12.png&apos; style=&apos;display: block&apos; target=&apos;_blank&apos; rel=&apos;noopener&apos;&gt;
+    &lt;span class=&apos;gatsby-resp-image-background-image&apos; style=&quot;padding-bottom: 20.58823529411765%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAECAYAAACOXx+WAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAsElEQVQY022O3QqCQBBGfR3x3y113R9zIxItsLtIb3qGIH37r50FIaiLw5ldBuZ4/bziOi8Ypje6+wuXaUH/WKGHJ5TW0M0BFa8hpHLeYLv9XzxpephuxLG7Ocx5RGup9QlZliFJEoRhiCiKEBNxbN8BfN//i0cVdP0bqTR4bUuqytZwcIsQAlJK90czuSgKlGXpTDs0e6pp8YsBFxKMMeR57ky1aZoiCAJXS2zlm4kP1E6F6fFhCVoAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;img class=&apos;gatsby-resp-image-image&apos; alt=&apos;img 12&apos; title=&apos;img 12&apos; src=&apos;/static/9efb64fed3a7fceefdb25e66937ff3ba/ca1dc/img_12.png&apos; srcset=&apos;/static/9efb64fed3a7fceefdb25e66937ff3ba/e7570/img_12.png 170w,
+/static/9efb64fed3a7fceefdb25e66937ff3ba/f46e7/img_12.png 340w,
+/static/9efb64fed3a7fceefdb25e66937ff3ba/ca1dc/img_12.png 680w,
+/static/9efb64fed3a7fceefdb25e66937ff3ba/02d09/img_12.png 1020w,
+/static/9efb64fed3a7fceefdb25e66937ff3ba/9d567/img_12.png 1360w,
+/static/9efb64fed3a7fceefdb25e66937ff3ba/f97d7/img_12.png 2000w&apos; sizes=&apos;(max-width: 680px) 100vw, 680px&apos; style=&apos;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&apos; loading=&apos;lazy&apos; decoding=&apos;async&apos;&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;세 번째 문제는 Embedded Redis의 포트 충돌 문제&lt;/strong&gt;입니다. Embedded Redis의 경우 여러 스프링 테스트 컨텍스트가 실행된다면 포트충돌이 발생하게 됩니다. 서로 다른 환경의 테스트 코드일 경우에는 새로운 컨텍스트를 생성하게 되는데, 이 때 RedisServer를 새롭게 하나 더 실행하려고 하기 때문입니다. 하지만 이미 포트를 사용중이기 때문에 포트 충돌이 발생하게 되는 것 입니다.&lt;/p&gt;
+&lt;p&gt;&lt;span class=&apos;gatsby-resp-image-wrapper&apos; style=&apos;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 680px; margin-bottom: 16px;&apos;&gt;
+      &lt;a class=&apos;gatsby-resp-image-link&apos; href=&apos;/static/33f32e95d667b3056dbbc1fd2d2adc11/f97d7/img_13.png&apos; style=&apos;display: block&apos; target=&apos;_blank&apos; rel=&apos;noopener&apos;&gt;
+    &lt;span class=&apos;gatsby-resp-image-background-image&apos; style=&quot;padding-bottom: 37.05882352941176%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAHCAYAAAAIy204AAAACXBIWXMAAAsTAAALEwEAmpwYAAABXklEQVQozz1Ry3LCMAzM9zBDk9gxj9CQlx9QCIQQOHTamR449P9/YLtKaQ87lmVptStHdbhifH/g/vGN0/2B3eULbfeJlclRxS/YaQWnUjRpMp2ekFxQaorbLENpDCqTIV8sELmqxNCfMVwHdKcOIThYZ5GzoEoShEyjZbNg9xdrjYIkObEhiUlTqDhGQkS+dbgOI/rrDWF/RMV72TiszYKEMYIWElGYMlaw/6qIhcErY8MazeGKiELd4kayC3HuBxy7M+pWCA1KEpYkWrFQsKbtnCiY38rbhGTClnVLqo8aa9EPAw4k2r0dqfIAG/aTHWnwolAgqrJfqxveV2zOmFMkEqvxfI7ZbIaodQ7DOE6EjfWoG4uaZ07LNSfL3rySj5HdqYnYil1ZA3O5XiLTOTK1osIlP8V7fsiI/aFD6zw2RYmiaibLBSdbNtVUUdKq7LF+nrJXr5+DZK8ylPcfIVTumjENOO0AAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;img class=&apos;gatsby-resp-image-image&apos; alt=&apos;img 13&apos; title=&apos;img 13&apos; src=&apos;/static/33f32e95d667b3056dbbc1fd2d2adc11/ca1dc/img_13.png&apos; srcset=&apos;/static/33f32e95d667b3056dbbc1fd2d2adc11/e7570/img_13.png 170w,
+/static/33f32e95d667b3056dbbc1fd2d2adc11/f46e7/img_13.png 340w,
+/static/33f32e95d667b3056dbbc1fd2d2adc11/ca1dc/img_13.png 680w,
+/static/33f32e95d667b3056dbbc1fd2d2adc11/02d09/img_13.png 1020w,
+/static/33f32e95d667b3056dbbc1fd2d2adc11/9d567/img_13.png 1360w,
+/static/33f32e95d667b3056dbbc1fd2d2adc11/f97d7/img_13.png 2000w&apos; sizes=&apos;(max-width: 680px) 100vw, 680px&apos; style=&apos;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&apos; loading=&apos;lazy&apos; decoding=&apos;async&apos;&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;해당 문제를 해결하기 위해 여러 방법을 고민해보았는데요. 첫 번째로는 jojoldu 님의 블로그에 작성되어 있는 방법인 &lt;strong&gt;해당 포트가 미사용중이라면 사용하고, 사용중이라면 그 외의 다른 포트를 사용하도록 하는 방법&lt;/strong&gt;입니다. 이를 통해서 포트가 충돌나는 문제를 피할 수가 있습니다.&lt;/p&gt;
+&lt;p&gt;두 번째로는 발생한 &lt;strong&gt;예외를 처리해버리는 방법&lt;/strong&gt;입니다. 새로운 RedisServer를 같은 포트로 생성하여 포트 충돌이 발생하더라도, try-catch로 예외를 처리해 계속 같은 포트를 사용하도록 하는 방법입니다. 해당 방법을 통해서도 간단하게 문제를 해결할 수 있을 것이라 생각해 해당 최종적으로는 해당 방법을 통해서 문제를 해결하기로 하였습니다.&lt;/p&gt;
+&lt;p&gt;&lt;span class=&apos;gatsby-resp-image-wrapper&apos; style=&apos;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 680px; margin-bottom: 16px;&apos;&gt;
+      &lt;a class=&apos;gatsby-resp-image-link&apos; href=&apos;/static/0702d819963ff58f0ac4b7d8730bfdd7/f97d7/img_14.png&apos; style=&apos;display: block&apos; target=&apos;_blank&apos; rel=&apos;noopener&apos;&gt;
+    &lt;span class=&apos;gatsby-resp-image-background-image&apos; style=&quot;padding-bottom: 70%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAAACXBIWXMAAAsTAAALEwEAmpwYAAABcUlEQVQ4y5VTSXLDMAzTd6KN1JrYafv/X6GQnDhL05nkgCEt0xAJ0OZncVi7Ra8BMSokCqPAew9rLZxzH8FIJFlxSClCk0yIRvhwI/yE2MTgcMoOlYQpZxIniESEEB6I3iU1wTsUsSg1I+cCzQltOc5oD4dJ9FGHKg7fJ4elWah4ahcg7DoFy04f9XwHZrAqCTLHrLWhN3bHPFLDEBnjNr5z22WD/BmDwzs/ayahJWIMOLeOr35EYp6SUtOyQ1OmLO0OFbnUmauwVvKM5jq7kmQl2feyIindluF4mmskXKerSa/g3NPIs2W2PsYuQzcatRPKhdDfu/5o0r5ew5TrYesFx/OC0jvdrrPoMFw+jJvfd9sM1sDuvlauS2+ohFK/WeBv8GGLr0e+dWmuD0ED8lmRVwq8MF6QTgrtMuN41hZn7X7Z09KbqYdll9xBKVyTxH86h/nRiDPnu3G+n13yoP4v4bZLYXsx9HoF+8/Zi5F/AZTYqy6kSEwmAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;img class=&apos;gatsby-resp-image-image&apos; alt=&apos;img 14&apos; title=&apos;img 14&apos; src=&apos;/static/0702d819963ff58f0ac4b7d8730bfdd7/ca1dc/img_14.png&apos; srcset=&apos;/static/0702d819963ff58f0ac4b7d8730bfdd7/e7570/img_14.png 170w,
+/static/0702d819963ff58f0ac4b7d8730bfdd7/f46e7/img_14.png 340w,
+/static/0702d819963ff58f0ac4b7d8730bfdd7/ca1dc/img_14.png 680w,
+/static/0702d819963ff58f0ac4b7d8730bfdd7/02d09/img_14.png 1020w,
+/static/0702d819963ff58f0ac4b7d8730bfdd7/9d567/img_14.png 1360w,
+/static/0702d819963ff58f0ac4b7d8730bfdd7/f97d7/img_14.png 2000w&apos; sizes=&apos;(max-width: 680px) 100vw, 680px&apos; style=&apos;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&apos; loading=&apos;lazy&apos; decoding=&apos;async&apos;&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;사실 테스트 컨테이너를 사용했다면 정말 간단하고 삽질을 하는 시간? 없이 빠르게 구현을 할 수 있었습니다. 하지만 테스트 컨테이너로 인해 점차 테스트 속도가 느려진다면 장기적으로는 작업의 효율성이 떨어지기 때문에 어떻게든 문제를 해결해서 임베디드 레디스를 사용하고자 하였습니다. 실제 각각의 환경에서 테스트를 수행해본 결과 꽤 유의미한 속도 절감을 얻을 수 있었습니다.&lt;/p&gt;
+&lt;br&gt;
+&lt;p&gt;&lt;img src=&quot;/static/testcontainer%EC%98%81%EC%83%81-57d44355271a53a4b76de78475988613.gif&quot; alt=&quot;TestContainer로 테스트를 수행&quot;&gt;&lt;/p&gt;
+&lt;br&gt;
+&lt;p&gt;&lt;img src=&quot;/static/embedded%EC%98%81%EC%83%81-49094fdc77e02b3c20cb51b165048cd0.gif&quot; alt=&quot;Embedded Redis로 테스트를 수행&quot;&gt;&lt;/p&gt;
 &lt;h2&gt;글을 마치며&lt;/h2&gt;
 &lt;p&gt;1, 2 편을 글을 정리하면서 각 트랜잭션의 격리는 어떻게 이루어지는지, 스프링에서는 이러한 트랜잭션을 제공하는지, 분산 환경에서는 어떻게 동시성을 보장해야하는지를 알 수 있었습니다. 그리고 이를 바탕으로 하여 목표했던 분산 환경에서의 상호배제도 구현을 할 수 있었습니다.&lt;/p&gt;
 &lt;p&gt;지금은 간단한 분산 환경을 가정하고 구현을 하였지만 향후 현업에서는 더 많은 트래픽을 감당하기 위해서 다중으로 분산 처리가 되어 있을 거라 생각합니다. 해당 환경에서도 지금 내용을 기반으로 하여 적절한 상호배제를 구현하는 것이 남은 숙제라는 생각이 듭니다.&lt;/p&gt;
