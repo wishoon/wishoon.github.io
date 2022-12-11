@@ -52,11 +52,11 @@ tags:
 
 ![](img_2.png)
 
-여기서 우리는 각각의 테스트들이 실행되기 전 `TRUNCATE`를 해주면 되기 때문에 `beforeTestMethod`를 이용해서 구현을 하면 되겠습니다.
+여기서 우리는 각각의 테스트들이 실행된 이후 `TRUNCATE`를 해주면 되기 때문에 `afterTestMethod`를 이용해서 구현을 하면 되겠습니다.
 
 추가적으로 자바 8 이후로 등장한 `AbstractTestExecutionListener`를 사용한다면 필요한 메서드만 오버라이딩 해서 사용할 수 있습니다.
 
-![](img_3.png)
+![](img_9.png)
 
 여기서 저희가 작성해야 할 기능은 크게 두 가지입니다. 하나는 기존과 같이 `TRUNCATE`를 해주는 기능이고, 또 하나는`RestAssured`을 수행하기 위해서 사용할 `Port`를 등록해주는 것입니다. `Environment` 를 통해 이러한 Port를 얻어올 수 있습니다.
 
